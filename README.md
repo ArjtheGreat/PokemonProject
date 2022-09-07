@@ -2,11 +2,12 @@
  
 ## Pokemon Battle Simulator Designed by Arjun Maitra and Nico Aviles
 
-Classes and Methods: 
+# Classes and Methods: <br />
 Classes: Pokémon, Item, Attack, Main, Effect
 
 -All Classes contain Constructors, Accessors, and Mutators
 
+## Methods: <br />
 Main: <br />
 create enum menuState() { battle, attack, bag, pokemon } which will keep track off which state the menu is. the enum is defaulted to battle.
 public static void userSelection() - gives prompts to user about what they wanna do (central game loop)
