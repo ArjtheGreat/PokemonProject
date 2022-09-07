@@ -3,6 +3,7 @@
 // September 2022
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public enum Type{None, Normal, Fire, Water, Grass, Flying, Fighting, Poison, Electric, Ground, Rock, Psychic, Ice, Bug, Ghost, Steel, Dragon, Dark, Fairy}
@@ -10,44 +11,47 @@ public class Main {
     // Enum Controls Menu State
     enum menuState {
         Battle, Attack, Bag, Pokemon;
-
-        @Override
-        public String toString() {
-            switch (this) {
-                case Battle:
-                    return "Battle";
-                case Attack:
-                    return "Attack";
-                case Bag:
-                    return "Bag";
-                case Pokemon:
-                    return "Pokemon";
-                default:
-                    throw new IllegalStateException();
-            }
-        }
     };
 
     public static void main(String[] args) {
 
         // Default Starts As Battle
         menuState menu = menuState.Battle;
+        userSelection(menu);
     }
 
     // Runs the Main Menu
-    public static void userSelection() {
+    public static void userSelection(menuState menu) {
+
+
+
+        while(true) {
+            Scanner in = new Scanner(System.in);
+            System.out.println("What do you wanna do?");
+            String line = in.nextLine();
+            if (line.equals("battle")) {
+
+            }
+            else {
+                System.exit(0);
+            }
+            print(menu);
+        }
 
     }
 
     // Prints Out Current Menu State
     public static void print(menuState menu) {
         if (menu == menuState.Battle) {
+            
+        } 
+        else if (menu == menuState.Attack) {
 
-        } else if (menu == menuState.Attack) {
+        } 
+        else if (menu == menuState.Bag) {
 
-        } else if (menu == menuState.Bag) {
-
-        } else {
+        } 
+        else {
 
         }
 
