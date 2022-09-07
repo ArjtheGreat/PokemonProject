@@ -1,13 +1,59 @@
+
+// Pokémon Project - Main Class
+// by Arjun Maitra and Nico Aviles
+// September 2022
+
 import java.util.Random;
 
 public class Main {
     public enum Type{None, Normal, Fire, Water, Grass, Flying, Fighting, Poison, Electric, Ground, Rock, Psychic, Ice, Bug, Ghost, Steel, Dragon, Dark, Fairy}
 
-    public static void main(String[] args){
+    // Enum Controls Menu State
+    enum menuState {
+        Battle, Attack, Bag, Pokemon;
 
+        @Override
+        public String toString() {
+            switch (this) {
+                case Battle:
+                    return "Battle";
+                case Attack:
+                    return "Attack";
+                case Bag:
+                    return "Bag";
+                case Pokemon:
+                    return "Pokemon";
+                default:
+                    throw new IllegalStateException();
+            }
+        }
+    };
 
+    public static void main(String[] args) {
+
+        // Default Starts As Battle
+        menuState menu = menuState.Battle;
+    }
+
+    // Runs the Main Menu
+    public static void userSelection() {
 
     }
+
+    // Prints Out Current Menu State
+    public static void print(menuState menu) {
+        if (menu == menuState.Battle) {
+
+        } else if (menu == menuState.Attack) {
+
+        } else if (menu == menuState.Bag) {
+
+        } else {
+
+        }
+
+    }
+
 
 
 
