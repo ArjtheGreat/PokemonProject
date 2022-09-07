@@ -4,7 +4,7 @@
 
 Classes and Methods: Pokémon, Item, Attack, Main 
 
--All Classes contain Accessors and Mutators
+-All Classes contain Constructors, Accessors, and Mutators
 
 Main: <br />
 create enum menuState() { battle, attack, bag, pokemon } which will keep track off which state the menu is. the enum is defaulted to battle.
