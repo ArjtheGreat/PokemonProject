@@ -25,3 +25,4 @@ String name, Effect effect
 Effect <br />
 int numEffect, Effect[] effectArr
 
+![pokeball](https://user-images.githubusercontent.com/33406133/188938588-bd730034-4acb-4670-b54f-a3fd94d855c1.png)
