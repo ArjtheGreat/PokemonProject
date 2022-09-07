@@ -2,7 +2,8 @@
  
 ## Pokemon Battle Simulator Designed by Arjun Maitra and Nico Aviles
 
-Classes and Methods: Pokémon, Item, Attack, Main 
+Classes and Methods: 
+Classes: Pokémon, Item, Attack, Main, Effect
 
 -All Classes contain Constructors, Accessors, and Mutators
 
