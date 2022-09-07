@@ -1,3 +1,7 @@
+// Pokémon Project - Attack Class
+// by Arjun Maitra and Nico Aviles
+// September 2022
+
 public class Attack {
 
     Main.Type type;

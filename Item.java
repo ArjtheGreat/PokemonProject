@@ -1,3 +1,7 @@
+// Pokémon Project - Item Class
+// by Arjun Maitra and Nico Aviles
+// September 2022
+
 public class Item {
 
     String name;

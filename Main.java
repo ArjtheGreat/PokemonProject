@@ -1,4 +1,3 @@
-
 // Pokémon Project - Main Class
 // by Arjun Maitra and Nico Aviles
 // September 2022

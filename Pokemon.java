@@ -1,3 +1,7 @@
+// Pokémon Project - Pokémon Class
+// by Arjun Maitra and Nico Aviles
+// September 2022
+
 public class Pokemon {
 
     Main.Type Type1;
