@@ -13,7 +13,7 @@ public static void userSelection() - gives prompts to user about what they wanna
 public static void print() - prints out the battlefield
 
 Pokémon <br />
-int level, int HP, String name
+int level, int HP, String name,  Attack[] attacks
 
 Attack <br />
 int damage, String name, Effect effect
