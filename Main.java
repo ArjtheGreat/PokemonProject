@@ -2,6 +2,7 @@
 // by Arjun Maitra and Nico Aviles
 // September 2022
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,7 +15,6 @@ public class Main {
     };
 
     public static void main(String[] args) {
-
         // Default Starts As Battle
         menuState menu = menuState.Battle;
         userSelection(menu);
@@ -23,11 +23,28 @@ public class Main {
     // Runs the Main Menu
     public static void userSelection(menuState menu) {
 
+        Scanner in = new Scanner(System.in);
 
+        // Player Personality
+        System.out.println("What is your name?");
+        String name = in.nextLine();
+
+        Pokemon[] pokies = new Pokemon[6];
+
+        pokies[0] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
+        pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
+        pokies[2] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
+        pokies[3] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
+        pokies[4] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
+        pokies[5] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
+
+        ArrayList<Item> items = new ArrayList<Item>();
+
+        Player player = new Player(name, pokies, items);
+        Player computer = new Player("computer", pokies, items);
 
         while(true) {
-            Scanner in = new Scanner(System.in);
-            System.out.println("What do you wanna do?");
+            System.out.println(player.playerName + ", " + "What do you wanna do?");
             String line = in.nextLine();
             if (line.equals("battle")) {
 
@@ -35,15 +52,15 @@ public class Main {
             else {
                 System.exit(0);
             }
-            print(menu);
+            print(player, computer, menu);
         }
 
     }
 
     // Prints Out Current Menu State
-    public static void print(menuState menu) {
+    public static void print(Player player1, Player computer, menuState menu) {
         if (menu == menuState.Battle) {
-            
+            System.out.println(player1.getPokemons()[0]);
         } 
         else if (menu == menuState.Attack) {
 

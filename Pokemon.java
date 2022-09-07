@@ -43,4 +43,11 @@ public class Pokemon {
     public String getName() {
         return name;
     }
+
+    public String toString() {
+        String str = name + " Level: " + LVL;
+        str += "\nHP: " + HP;
+
+        return str;
+    }
 }
