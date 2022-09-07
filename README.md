@@ -8,8 +8,8 @@ Classes and Methods: Pokémon, Item, Attack, Main
 
 Main: <br />
 create enum menuState() { battle, attack, bag, pokemon } which will keep track off which state the menu is. the enum is defaulted to battle.
-void userSelection() - gives prompts to user about what they wanna do
-void print() - prints out the battlefield
+public static void userSelection() - gives prompts to user about what they wanna do
+public static void print() - prints out the battlefield
 
 
 Pokémon <br />
