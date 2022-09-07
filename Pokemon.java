@@ -46,7 +46,6 @@ public class Pokemon {
 
     public String toString() {
         String str = name + " Level: " + LVL;
-        str += "\nHP: " + HP;
 
         return str;
     }

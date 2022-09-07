@@ -11,7 +11,7 @@ public class Player {
         this.items = items;
     }
 
-    // Accessors 
+    // Accessors
     public Pokemon[] getPokemons() {
         return pokemons;
     }

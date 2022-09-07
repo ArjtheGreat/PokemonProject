@@ -60,7 +60,12 @@ public class Main {
     // Prints Out Current Menu State
     public static void print(Player player1, Player computer, menuState menu) {
         if (menu == menuState.Battle) {
-            System.out.println(player1.getPokemons()[0]);
+            String HP = "HP: "+player1.pokemons[0].HP;
+            String spaces = "                             ";
+            System.out.print("*****************************\n*");
+            System.out.println(player1.pokemons[0].toString()+spaces.substring(player1.pokemons[0].toString().length()+2,spaces.length())+"*\n*HP: "+player1.pokemons[0].HP+spaces.substring(HP.length()+2,spaces.length())+"*");
+
+
         } 
         else if (menu == menuState.Attack) {
 
