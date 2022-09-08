@@ -32,7 +32,7 @@ public class Main {
         Pokemon[] pokies = new Pokemon[6];
 
         pokies[0] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
-        pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
+        pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pichu");
         pokies[2] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
         pokies[3] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
         pokies[4] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
@@ -42,6 +42,8 @@ public class Main {
 
         Player player = new Player(name, pokies, items);
         Player computer = new Player("computer", pokies, items);
+
+
 
         while(true) {
             System.out.println(player.playerName + ", " + "What do you wanna do?");
