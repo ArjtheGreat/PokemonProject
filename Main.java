@@ -51,6 +51,12 @@ public class Main {
             if (line.equals("battle")) {
 
             }
+            if (line.equals("new")) {
+                menu = menuState.Pokemon;
+                System.out.println("Name of Pokemon");
+                String pokemonIn = in.nextLine();
+                player.switchCurrentPokemon(pokemonIn);
+            }
             else {
                 System.exit(0);
             }
@@ -59,7 +65,7 @@ public class Main {
 
     }
 
-    // Prints Out Current Menu State
+    // Prints Out Current Menu State (Code by Nico)
     public static void print(Player player1, Player computer, menuState menu) {
         if (menu == menuState.Battle) {
             String HP = "HP: "+player1.pokemons[0].HP;
