@@ -6,6 +6,13 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+/*
+         String toString = "bruh bruh";
+         String spaces = "                          ";
+         String output = toString + spaces.substring(toString.length(),spaces.length());
+         System.out.print(output);
+*/
+
 public class Main {
     public enum Type{None, Normal, Fire, Water, Grass, Flying, Fighting, Poison, Electric, Ground, Rock, Psychic, Ice, Bug, Ghost, Steel, Dragon, Dark, Fairy}
 

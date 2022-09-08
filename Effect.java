@@ -2,7 +2,6 @@
 // by Arjun Maitra and Nico Aviles (Code by Maitra)
 // September 2022
 
-
 public class Effect {
     int numEffect;
     enum allEffects { heal20, heal50, heal100, pokeballCatch, burn, paralysis, confusion };
@@ -19,4 +18,5 @@ public class Effect {
     public Effect.allEffects getEffect(int numEffect) {
         return allEffects.values()[numEffect];
     }
+
 }
