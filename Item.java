@@ -14,4 +14,21 @@ public class Item {
         this.quantity = quantity;
     }
 
+    // Accessors
+    public Effect getEffect() {
+        return effect;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    // Mutators
+    public void setQuantity(int x) {
+        quantity = x;
+    }
 }

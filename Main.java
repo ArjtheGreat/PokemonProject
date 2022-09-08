@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
     public enum Type{None, Normal, Fire, Water, Grass, Flying, Fighting, Poison, Electric, Ground, Rock, Psychic, Ice, Bug, Ghost, Steel, Dragon, Dark, Fairy}
 
-    // Enum Controls Menu State
+    // Enum Controls Menu State (code by Maitra)
     enum menuState {
         Battle, Attack, Bag, Pokemon;
     };
@@ -20,7 +20,7 @@ public class Main {
         userSelection(menu);
     }
 
-    // Runs the Main Menu
+    // Runs the Main Menu (code by Maitra)
     public static void userSelection(menuState menu) {
 
         Scanner in = new Scanner(System.in);

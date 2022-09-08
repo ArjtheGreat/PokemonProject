@@ -14,5 +14,17 @@ public class Attack {
         this.name = name;
     }
 
+    // Accessors
+    public Main.Type getType() {
+        return type;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
 

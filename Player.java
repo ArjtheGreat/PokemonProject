@@ -1,3 +1,6 @@
+// Pokémon Project - Pokémon Class
+// by Arjun Maitra and Nico Aviles (code by Maitra)
+// September 2022
 import java.util.ArrayList;
 
 public class Player {
@@ -18,5 +21,10 @@ public class Player {
 
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    // Adds New Item To Bag
+    public void addToBag(Item item) {
+        items.add(item);
     }
 }
