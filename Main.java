@@ -32,7 +32,7 @@ public class Main {
         Pokemon[] pokies = new Pokemon[6];
 
         pokies[0] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
-        pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
+        pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pichu");
         pokies[2] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
         pokies[3] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
         pokies[4] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
@@ -43,11 +43,19 @@ public class Main {
         Player player = new Player(name, pokies, items);
         Player computer = new Player("computer", pokies, items);
 
+
+
         while(true) {
             System.out.println(player.playerName + ", " + "What do you wanna do?");
             String line = in.nextLine();
             if (line.equals("battle")) {
 
+            }
+            if (line.equals("new")) {
+                menu = menuState.Pokemon;
+                System.out.println("Name of Pokemon");
+                String pokemonIn = in.nextLine();
+                player.switchCurrentPokemon(pokemonIn);
             }
             else {
                 System.exit(0);
@@ -57,7 +65,7 @@ public class Main {
 
     }
 
-    // Prints Out Current Menu State
+    // Prints Out Current Menu State (Code by Nico)
     public static void print(Player player1, Player computer, menuState menu) {
         //Nico did this part
         if (menu == menuState.Battle) {
