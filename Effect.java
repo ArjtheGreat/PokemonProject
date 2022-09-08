@@ -5,7 +5,7 @@
 
 public class Effect {
     int numEffect;
-    enum allEffects { fire, air, water, earth };
+    enum allEffects { heal20, heal50, heal100, pokeballCatch, burn, paralysis, confusion };
 
     public Effect(int numEffect){
         this.numEffect = numEffect;

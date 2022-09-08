@@ -59,6 +59,7 @@ public class Main {
 
     // Prints Out Current Menu State
     public static void print(Player player1, Player computer, menuState menu) {
+        //Nico did this part
         if (menu == menuState.Battle) {
             String HP = "HP: "+player1.pokemons[0].HP;
             String spaces = "                             ";

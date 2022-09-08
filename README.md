@@ -31,7 +31,7 @@ public int getPower()
 public String getName()
 
 Item <br />
-String name, Effect effect
+String name, Effect effect, int quantity
 public Effect getEffect()
 public int getQuantity()
 public String getName()
