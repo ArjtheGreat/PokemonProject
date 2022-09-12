@@ -61,11 +61,7 @@ public class Main {
 
         ArrayList<Item> items = new ArrayList<Item>();
 
-        Player player = new Player(name, pokies, items);
-
-
-
-        System.out.println(player.getCurrentPokemon().getName());
+        Player player = new Player(name, pokies, items);        
 
         Pokemon[] newPokies = new Pokemon[6];
         newPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 3, 100, 10, 10, "Giratina", attacks);
@@ -76,27 +72,26 @@ public class Main {
         newPokies[0] = new Pokemon(Type.Grass, Type.Poison, 3, 100, 10, 10, "Bulbasaur", attacks);
         Player computer = new Player("computer", newPokies, items);
 
-
-
         int currentTurn = 0;
         while(true) {
-
             print(player,computer,menu);
-
             menu = menuState.Battle;
             if(currentTurn % 2 == 0) {
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
                 String line = in.nextLine();
                 if (line.equals("battle")) {
-
+                    System.out.println("What attack do you want?");
+                    String attackIn = in.nextLine();
+                    computer.getCurrentPokemon().setHP(computer.getCurrentPokemon().getHP()
+                            - player.getCurrentPokemon().getAttack()[Integer.parseInt(attackIn)].power);
                 }
-                if (line.equals("new")) {
+                else if (line.equals("new")) {
                     menu = menuState.Pokemon;
                     System.out.println("Name of Pokemon");
                     String pokemonIn = in.nextLine();
                     player.switchCurrentPokemon(pokemonIn);
                 }
-                if(line.equals("nothing")) {
+                else if(line.equals("nothing")) {
 
                 } 
                 else {
@@ -107,9 +102,12 @@ public class Main {
                 Random rand = new Random();
                 int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
                 
-                
+                player.getCurrentPokemon().setHP(
+                        player.getCurrentPokemon().getHP() - computer.getCurrentPokemon().getAttack()[attackInt].power);
+                if (player.getCurrentPokemon().HP <= 0) {
+                    player.switchCurrentPokemon("Pichu");
+                }
             }
-            System.out.println(computer.getCurrentPokemon().getHP());
             print(player, computer, menu);
             currentTurn++;
         }

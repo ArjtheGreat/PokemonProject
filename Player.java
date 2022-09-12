@@ -36,6 +36,7 @@ public class Player {
     public void switchCurrentPokemon(String inPokieName) {
         for(int i = 0; i<pokemons.length; i++) {
             if(pokemons[i].getName().equals(inPokieName)) {
+                System.out.println("hi");
                 Pokemon pokieStorage = pokemons[0];
                 pokemons[0] = pokemons[i];
                 pokemons[i] = pokieStorage;
