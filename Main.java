@@ -60,11 +60,11 @@ public class Main {
         int currentTurn = 0;
         while(true) {
             menu = menuState.Battle;
-            if(currentTurn % 0 == 0) {
+            if(currentTurn % 2 == 0) {
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
                 String line = in.nextLine();
                 if (line.equals("battle")) {
-
+                    print(player,computer,menu);
                 }
                 if (line.equals("new")) {
                     menu = menuState.Pokemon;
@@ -91,11 +91,15 @@ public class Main {
     public static void print(Player player1, Player computer, menuState menu) {
         //Nico did this part
         if (menu == menuState.Battle) {
-            String HP = "HP: "+player1.pokemons[0].HP;
+            String HP = "HP: "+computer.pokemons[0].HP;
             String spaces = "                             ";
             System.out.print("*****************************\n*");
-            System.out.println(player1.pokemons[0].toString()+spaces.substring(player1.pokemons[0].toString().length()+2,spaces.length())+"*\n*HP: "+player1.pokemons[0].HP+spaces.substring(HP.length()+2,spaces.length())+"*");
-
+            System.out.println(computer.pokemons[0].toString()+spaces.substring(computer.pokemons[0].toString().length()+2,spaces.length())+"*\n*HP: "+computer.pokemons[0].HP+spaces.substring(HP.length()+2,spaces.length())+"*");
+            System.out.print("*                     0     *\n*                    -|-    *\n*                    / \\    *\n*                           *\n*     0                     *\n");
+            String spaces1 = spaces.substring(0,20-player1.pokemons[0].toString().length());
+            String playerLevelLine = "*    -|-"+spaces1+player1.pokemons[0].toString()+"*";
+            String spaces2 = spaces.substring(0,20-("HP: "+player1.pokemons[0].HP).length());
+            System.out.print(playerLevelLine+"\n*    / \\"+spaces2+"HP: "+player1.pokemons[0].HP+"*\n*---------------------------*\n*");
 
         } 
         else if (menu == menuState.Attack) {

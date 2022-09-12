@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1576ddd3-b79e-4673-b99b-a481d297d650" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="1576ddd3-b79e-4673-b99b-a481d297d650" name="Changes" comment="Item switch case work" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +56,21 @@
       <option name="presentableId" value="Default" />
       <updated>1662571243095</updated>
     </task>
+    <task id="LOCAL-00001" summary="Print method work">
+      <created>1662582658820</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662582658820</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Item switch case work">
+      <created>1662647235384</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662647235384</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -71,5 +84,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Print method work" />
+    <MESSAGE value="Item switch case work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Item switch case work" />
   </component>
 </project>
