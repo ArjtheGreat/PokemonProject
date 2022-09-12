@@ -3,8 +3,6 @@
 // September 2022
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -41,38 +39,34 @@ public class Main {
         Pokemon[] pokies = new Pokemon[6];
 
         Attack[] attacks = new Attack[4];
-        attacks[0] = new Attack(Type.Fire, 2, "Fire");
-        attacks[1] = new Attack(Type.Fire, 2, "Water");
-        attacks[2] = new Attack(Type.Fire, 2, "Air");
-        attacks[3] = new Attack(Type.Fire, 2, "Earth");
+        attacks[0] = new Attack(Type.Normal, 20, "Tackle");
+        attacks[1] = new Attack(Type.Water, 40, "Aqua Jet");
+        attacks[2] = new Attack(Type.Water, 60, "Water Pulse");
+        attacks[3] = new Attack(Type.Water, 100, "Hydro Pump");
 
-        pokies[0] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
-        pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pichu", attacks);
-        pokies[2] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
-        pokies[3] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
-        pokies[4] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
-        pokies[5] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
+
+        pokies[0] = new Pokemon(Type.Water, Type.None, 3, 40, 10, 10, "Squirtle", attacks);
+        pokies[1] = new Pokemon(Type.Fairy, Type.Normal, 10, 100, 20, 20, "Jigglypuff", attacks);
+        pokies[2] = new Pokemon(Type.Flying, Type.Dragon, 100, 150, 100, 100, "Rayquaza", attacks);
+        pokies[3] = new Pokemon(Type.Grass, Type.Steel, 40, 120, 30, 70, "Ferrothorn", attacks);
+        pokies[4] = new Pokemon(Type.Ghost, Type.Fairy, 30, 90, 70, 40, "Pikachu", attacks);
+        pokies[5] = new Pokemon(Type.Fire, Type.Fighting, 80, 130, 90, 80, "Infernape", attacks);
 
         ArrayList<Item> items = new ArrayList<Item>();
 
         Player player = new Player(name, pokies, items);
-
-        Collections.reverse(Arrays.asList(pokies));;
         Player computer = new Player("computer", pokies, items);
 
 
         int currentTurn = 0;
         while(true) {
-            print(player, computer, menu);
+            print(player,computer,menu);
             menu = menuState.Battle;
             if(currentTurn % 2 == 0) {
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
                 String line = in.nextLine();
                 if (line.equals("battle")) {
-                    
-                    System.out.println("What attack do you want?");
-                    String attackIn = in.nextLine();
-                    computer.getCurrentPokemon().setHP(computer.getCurrentPokemon().getHP() - player.getCurrentPokemon().getAttack()[Integer.parseInt(attackIn)].power);
+
                 }
                 if (line.equals("new")) {
                     menu = menuState.Pokemon;
@@ -86,10 +80,8 @@ public class Main {
             else {
                 Random rand = new Random();
                 int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
-                player.getCurrentPokemon().setHP(player.getCurrentPokemon().getHP() - computer.getCurrentPokemon().getAttack()[attackInt].power);
-                if(player.getCurrentPokemon().HP <= 0) {
-                    player.switchCurrentPokemon("Pichu");
-                }
+                
+                
             }
             print(player, computer, menu);
             currentTurn++;
@@ -104,7 +96,7 @@ public class Main {
             String HP = "HP: "+computer.pokemons[0].HP;
             String spaces = "                             ";
             System.out.print("*****************************\n*");
-            System.out.println(computer.pokemons[0].toString()+spaces.substring(computer.pokemons[0].toString().length()+2,spaces.length())+"*\n*HP: "+computer.pokemons[0].HP+spaces.substring(HP.length()+2,spaces.length())+"*");
+            System.out.println(computer.pokemons[0].toString()+spaces.substring(computer.pokemons[0].toString().length()+2,spaces.length())+"*\n*"+HP+spaces.substring(HP.length()+2,spaces.length())+"*");
             System.out.print("*                     0     *\n*                    -|-    *\n*                    / \\    *\n*                           *\n*     0                     *\n");
             String spaces1 = spaces.substring(0,20-player1.pokemons[0].toString().length());
             String playerLevelLine = "*    -|-"+spaces1+player1.pokemons[0].toString()+"*";
