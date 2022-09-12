@@ -48,22 +48,29 @@ public class Main {
 
         pokies[0] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
         pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pichu", attacks);
-        pokies[2] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
-        pokies[3] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
-        pokies[4] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
-        pokies[5] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
+        pokies[2] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Daemon", attacks);
+        pokies[3] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Rhaenyra", attacks);
+        pokies[4] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Danaerys", attacks);
+        pokies[5] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Jon Snow", attacks);
 
         ArrayList<Item> items = new ArrayList<Item>();
 
         Player player = new Player(name, pokies, items);
+        System.out.println(player.getCurrentPokemon().getName());
 
-        Collections.reverse(Arrays.asList(pokies));;
-        Player computer = new Player("computer", pokies, items);
+        Pokemon[] newPokies = new Pokemon[6];
+        newPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 3, 100, 10, 10, "Giratina", attacks);
+        newPokies[4] = new Pokemon(Type.Dark, Type.Rock, 3, 100, 10, 10, "Tyranitar", attacks);
+        newPokies[3] = new Pokemon(Type.Fire, Type.Flying, 3, 100, 10, 10, "Charizard", attacks);
+        newPokies[2] = new Pokemon(Type.Fire, Type.None, 3, 100, 10, 10, "Charmander", attacks);
+        newPokies[1] = new Pokemon(Type.Water, Type.None, 3, 100, 10, 10, "Kyogre", attacks);
+        newPokies[0] = new Pokemon(Type.Grass, Type.Poison, 3, 100, 10, 10, "Bulbasaur", attacks);
+        Player computer = new Player("computer", newPokies, items);
+
 
 
         int currentTurn = 0;
         while(true) {
-            print(player, computer, menu);
             menu = menuState.Battle;
             if(currentTurn % 2 == 0) {
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
@@ -79,7 +86,11 @@ public class Main {
                     System.out.println("Name of Pokemon");
                     String pokemonIn = in.nextLine();
                     player.switchCurrentPokemon(pokemonIn);
-                } else {
+                }
+                if(line.equals("nothing")) {
+
+                } 
+                else {
                     System.exit(0);
                 }
             }
@@ -91,6 +102,7 @@ public class Main {
                     player.switchCurrentPokemon("Pichu");
                 }
             }
+            System.out.println(computer.getCurrentPokemon().getHP());
             print(player, computer, menu);
             currentTurn++;
         }
