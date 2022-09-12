@@ -50,6 +50,7 @@ public Effect.allEffects getEffect(int numEffect)  <br />
 Player <br />
 String playerName, Pokemon[] pokemons, ArrayList<Item> items  <br />
 addToBag(Item item) - adds inputed Item to bag  <br />
+Pokemon getCurrentPokemon() - gets pokemons[0] <br />
 switchCurrentPokemon(Pokemon inPokie) - puts the current pokemon being used at pokemons[0] and puts the old pokemons[0] in the old spot.  <br />
 
 ![pokeball](https://user-images.githubusercontent.com/33406133/188938588-bd730034-4acb-4670-b54f-a3fd94d855c1.png)  <br />

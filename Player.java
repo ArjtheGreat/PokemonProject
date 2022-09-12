@@ -28,6 +28,10 @@ public class Player {
         items.add(item);
     }
 
+    public Pokemon getCurrentPokemon() {
+        return pokemons[0];
+    }
+
     // Will Move the Current Pokemon to Front of The Array ()
     public void switchCurrentPokemon(String inPokieName) {
         for(int i = 0; i<pokemons.length; i++) {

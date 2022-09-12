@@ -3,6 +3,8 @@
 // September 2022
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -54,17 +56,23 @@ public class Main {
         ArrayList<Item> items = new ArrayList<Item>();
 
         Player player = new Player(name, pokies, items);
+
+        Collections.reverse(Arrays.asList(pokies));;
         Player computer = new Player("computer", pokies, items);
 
 
         int currentTurn = 0;
         while(true) {
+            print(player, computer, menu);
             menu = menuState.Battle;
             if(currentTurn % 2 == 0) {
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
                 String line = in.nextLine();
                 if (line.equals("battle")) {
-                    print(player,computer,menu);
+                    
+                    System.out.println("What attack do you want?");
+                    String attackIn = in.nextLine();
+                    computer.getCurrentPokemon().setHP(computer.getCurrentPokemon().getHP() - player.getCurrentPokemon().getAttack()[Integer.parseInt(attackIn)].power);
                 }
                 if (line.equals("new")) {
                     menu = menuState.Pokemon;
@@ -78,8 +86,10 @@ public class Main {
             else {
                 Random rand = new Random();
                 int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
-                
-                
+                player.getCurrentPokemon().setHP(player.getCurrentPokemon().getHP() - computer.getCurrentPokemon().getAttack()[attackInt].power);
+                if(player.getCurrentPokemon().HP <= 0) {
+                    player.switchCurrentPokemon("Pichu");
+                }
             }
             print(player, computer, menu);
             currentTurn++;
