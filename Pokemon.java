@@ -11,8 +11,9 @@ public class Pokemon {
     int attack;
     int defense;
     String name;
+    Attack[] attacks;
 
-    public Pokemon(Main.Type Type1, Main.Type Type2, int LVL, int HPBase, int attackBase, int defenseBase, String name){
+    public Pokemon(Main.Type Type1, Main.Type Type2, int LVL, int HPBase, int attackBase, int defenseBase, String name, Attack[] attacks){
         this.Type1 = Type1;
         this.Type2 = Type2;
         this.LVL = LVL;
@@ -23,6 +24,7 @@ public class Pokemon {
         this.HP = (int) HPCalc;
         this.attack = (int) attackCalc;
         this.defense = (int) defenseCalc;
+        this.attacks = attacks;
     }
     public Main.Type getType1(){
         return Type1;
@@ -42,6 +44,10 @@ public class Pokemon {
     }
     public String getName() {
         return name;
+    }
+    
+    public Attack[] getAttack() {
+        return attacks;
     }
 
     public String toString() {

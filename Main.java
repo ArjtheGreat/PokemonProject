@@ -38,12 +38,18 @@ public class Main {
 
         Pokemon[] pokies = new Pokemon[6];
 
-        pokies[0] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
-        pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pichu");
-        pokies[2] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
-        pokies[3] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
-        pokies[4] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
-        pokies[5] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu");
+        Attack[] attacks = new Attack[4];
+        attacks[0] = new Attack(Type.Fire, 2, "Fire");
+        attacks[1] = new Attack(Type.Fire, 2, "Water");
+        attacks[2] = new Attack(Type.Fire, 2, "Air");
+        attacks[3] = new Attack(Type.Fire, 2, "Earth");
+
+        pokies[0] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
+        pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pichu", attacks);
+        pokies[2] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
+        pokies[3] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
+        pokies[4] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
+        pokies[5] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
 
         ArrayList<Item> items = new ArrayList<Item>();
 
@@ -51,23 +57,32 @@ public class Main {
         Player computer = new Player("computer", pokies, items);
 
 
-
+        int currentTurn = 0;
         while(true) {
-            System.out.println(player.playerName + ", " + "What do you wanna do?");
-            String line = in.nextLine();
-            if (line.equals("battle")) {
+            menu = menuState.Battle;
+            if(currentTurn % 0 == 0) {
+                System.out.println(player.playerName + ", " + "What do you wanna do?");
+                String line = in.nextLine();
+                if (line.equals("battle")) {
 
-            }
-            if (line.equals("new")) {
-                menu = menuState.Pokemon;
-                System.out.println("Name of Pokemon");
-                String pokemonIn = in.nextLine();
-                player.switchCurrentPokemon(pokemonIn);
+                }
+                if (line.equals("new")) {
+                    menu = menuState.Pokemon;
+                    System.out.println("Name of Pokemon");
+                    String pokemonIn = in.nextLine();
+                    player.switchCurrentPokemon(pokemonIn);
+                } else {
+                    System.exit(0);
+                }
             }
             else {
-                System.exit(0);
+                Random rand = new Random();
+                int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
+                
+                
             }
             print(player, computer, menu);
+            currentTurn++;
         }
 
     }
