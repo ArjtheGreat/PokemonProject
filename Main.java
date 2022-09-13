@@ -23,7 +23,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Default Starts As Battle
-        menuState menu = menuState.Battle;
+        menuState menu = menuState.Attack;
         userSelection(menu);
     }
 
@@ -74,8 +74,8 @@ public class Main {
 
         int currentTurn = 0;
         while(true) {
-            print(player,computer,menu);
-            menu = menuState.Battle;
+            print(player,computer,menu, currentTurn);
+            //menu = menuState.Battle;
             if(currentTurn % 2 == 0) {
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
                 String line = in.nextLine();
@@ -108,18 +108,19 @@ public class Main {
                     player.switchCurrentPokemon("Pichu");
                 }
             }
-            print(player, computer, menu);
+            print(player, computer, menu, currentTurn);
             currentTurn++;
         }
 
     }
 
     // Prints Out Current Menu State (Code by Nico)
-    public static void print(Player player1, Player computer, menuState menu) {
+    public static void print(Player player1, Player computer, menuState menu, int turn) {
         //Nico did this part
+        String spaces = "                             ";
         if (menu == menuState.Battle) {
             String HP = "HP: "+computer.pokemons[0].HP;
-            String spaces = "                             ";
+            
             System.out.print("*****************************\n*");
             System.out.println(computer.pokemons[0].toString()+spaces.substring(computer.pokemons[0].toString().length()+2,spaces.length())+"*\n*"+HP+spaces.substring(HP.length()+2,spaces.length())+"*");
             System.out.print("*                     0     *\n*                    -|-    *\n*                    / \\    *\n*                           *\n*     0                     *\n");
@@ -129,8 +130,20 @@ public class Main {
             System.out.print(playerLevelLine+"\n*    / \\"+spaces2+"HP: "+player1.pokemons[0].HP+"*\n*---------------------------*\n*");
 
         } 
-        else if (menu == menuState.Attack) {
 
+        // Maitra
+        else if (menu == menuState.Attack) {
+            System.out.print("*****************************\n*");
+            //21
+            System.out.print("Attack" + "\n*" + player1.getCurrentPokemon().getAttack()[0].getName() + spaces.substring(0, 20-player1.getCurrentPokemon().getAttack()[0].getName().length()) + "*\n*" + player1.getCurrentPokemon().getAttack()[1].getName() + spaces.substring(0, 20-player1.getCurrentPokemon().getAttack()[1].getName().length()) + "*\n*" 
+                    + player1
+                            .getCurrentPokemon().getAttack()[2].getName()
+                    + spaces.substring(0, 20 - player1.getCurrentPokemon().getAttack()[2].getName().length()) + "*\n*" + player1
+                    .getCurrentPokemon().getAttack()[3].getName()
+                    + spaces.substring(0, 20 - player1.getCurrentPokemon().getAttack()[3].getName().length()) + "*\n*");
+            
+            System.out.print("*****************************\n*");
+            
         } 
         else if (menu == menuState.Bag) {
 
