@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Default Starts As Battle
-        menuState menu = menuState.Attack;
+        menuState menu = menuState.Pokemon;
         userSelection(menu);
     }
 
@@ -53,6 +53,10 @@ public class Main {
         pokies[5] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Jon Snow", attacks);
 
         ArrayList<Item> items = new ArrayList<Item>();
+        items.add(new Item("Item 1", new Effect(3), 3));
+        items.add(new Item("Item 2", new Effect(3), 3));
+        items.add(new Item("Item 3", new Effect(3), 3));
+        items.add(new Item("Item 4", new Effect(3), 3));
 
         Player player = new Player(name, pokies, items);        
 
@@ -110,10 +114,10 @@ public class Main {
     // Prints Out Current Menu State (Code by Nico)
     public static void print(Player player1, Player computer, menuState menu, int turn) {
         //Nico did this part
-        String spaces = "                             ";
+        
         if (menu == menuState.Battle) {
             String HP = "HP: "+computer.pokemons[0].HP;
-            
+            String spaces = "                             ";
             System.out.print("*****************************\n*");
             System.out.println(computer.pokemons[0].toString()+spaces.substring(computer.pokemons[0].toString().length()+2,spaces.length())+"*\n*"+HP+spaces.substring(HP.length()+2,spaces.length())+"*");
             System.out.print("*                     0     *\n*                    -|-    *\n*                    / \\    *\n*                           *\n*     0                     *\n");
@@ -124,25 +128,62 @@ public class Main {
 
         } 
 
-        // Maitra
+        // By Maitra
         else if (menu == menuState.Attack) {
+            String spaces = "                             ";
             System.out.print("*****************************\n*");
             //21
-            System.out.print("Attack" + "\n*" + player1.getCurrentPokemon().getAttack()[0].getName() + spaces.substring(0, 20-player1.getCurrentPokemon().getAttack()[0].getName().length()) + "*\n*" + player1.getCurrentPokemon().getAttack()[1].getName() + spaces.substring(0, 20-player1.getCurrentPokemon().getAttack()[1].getName().length()) + "*\n*" 
+            System.out.print("Attack                     *" + "\n*---------------------------*" + "\n*" + player1.getCurrentPokemon().getAttack()[0].getName() + spaces.substring(0, 27-player1.getCurrentPokemon().getAttack()[0].getName().length()) + "*\n*" + player1.getCurrentPokemon().getAttack()[1].getName() + spaces.substring(0, 27-player1.getCurrentPokemon().getAttack()[1].getName().length()) + "*\n*" 
                     + player1
                             .getCurrentPokemon().getAttack()[2].getName()
-                    + spaces.substring(0, 20 - player1.getCurrentPokemon().getAttack()[2].getName().length()) + "*\n*" + player1
+                    + spaces.substring(0, 27 - player1.getCurrentPokemon().getAttack()[2].getName().length()) + "*\n*" + player1
                     .getCurrentPokemon().getAttack()[3].getName()
-                    + spaces.substring(0, 20 - player1.getCurrentPokemon().getAttack()[3].getName().length()) + "*\n*");
+                    + spaces.substring(0, 27 - player1.getCurrentPokemon().getAttack()[3].getName().length()) + "*\n*");
             
             System.out.print("*****************************\n*");
             
         } 
         else if (menu == menuState.Bag) {
+            String spaces = "                             ";
+            System.out.print("*****************************\n*");
+            // 21
+            System.out.print("Bag                        *" + "\n*---------------------------*" + "\n*"
+                    + player1.getItems().get(0).getName()
+                    + spaces.substring(0, 27 - player1.getItems().get(0).getName().length()) + "*\n*"
+                    + player1.getItems().get(1).getName()
+                    + spaces.substring(0, 27 - player1.getItems().get(1).getName().length()) + "*\n*"
+                    + player1
+                            .getItems().get(2).getName()
+                    + spaces.substring(0, 27 - player1.getItems().get(2).getName().length()) + "*\n*"
+                    + player1
+                            .getItems().get(3).getName()
+                    + spaces.substring(0, 27 - player1.getItems().get(3).getName().length()) + "*\n*");
 
+            System.out.print("*****************************\n*");
         } 
         else {
+            String spaces = "                             ";
+            System.out.print("*****************************\n*");
+            // 21
+            System.out.print("Pokemon                    *" + "\n*---------------------------*" + "\n*"
+                    + player1.getPokemons()[0].getName()
+                    + spaces.substring(0, 27 - player1.getPokemons()[0].getName().length()) + "*\n*"
+                    + player1.getPokemons()[1].getName()
+                    + spaces.substring(0, 27 - player1.getPokemons()[1].getName().length()) + "*\n*"
+                    + player1
+                            .getPokemons()[2].getName()
+                    + spaces.substring(0, 27 - player1.getPokemons()[2].getName().length()) + "*\n*"
+                    + player1
+                            .getPokemons()[3].getName()
+                    + spaces.substring(0, 27 - player1.getPokemons()[3].getName().length()) 
+                    + "*\n*" + player1
+                            .getPokemons()[4].getName()
+                    + spaces.substring(0, 27 - player1.getPokemons()[4].getName().length()) + "*\n*" + player1
+                            .getPokemons()[5].getName()
+                    + spaces.substring(0, 27 - player1.getPokemons()[5].getName().length()) + "*\n*");
+                    
 
+            System.out.print("****************************\n*");
         }
 
     }
