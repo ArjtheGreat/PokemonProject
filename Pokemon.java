@@ -7,11 +7,13 @@ public class Pokemon {
     Main.Type Type1;
     Main.Type Type2;
     int LVL;
+    int startingHP;
     int HP;
     int attack;
     int defense;
     String name;
     Attack[] attacks;
+    Effect statusEffect;
 
     public Pokemon(Main.Type Type1, Main.Type Type2, int LVL, int HPBase, int attackBase, int defenseBase, String name, Attack[] attacks){
         this.Type1 = Type1;
@@ -21,7 +23,8 @@ public class Pokemon {
         double HPCalc = LVL*(1+(HPBase/10)) + HPBase;
         double attackCalc = LVL*(1+(attackBase/10)) + attackBase;
         double defenseCalc = LVL*(1+(defenseBase/30)) + defenseBase;
-        this.HP = (int) HPCalc;
+        this.startingHP = (int) HPCalc;
+        HP = startingHP;
         this.attack = (int) attackCalc;
         this.defense = (int) defenseCalc;
         this.attacks = attacks;
@@ -49,6 +52,21 @@ public class Pokemon {
     public Attack[] getAttack() {
         return attacks;
     }
+
+    public void setStatusEffect(Pokemon pokemon, Effect effect){
+        statusEffect = effect;
+    }
+
+    public void effectTick(){
+        if(statusEffect.equals(Effect.allEffects.poison)){
+            HP -= startingHP/6;
+        }
+        if(statusEffect.equals(Effect.allEffects.burn)){
+            HP -= startingHP/4;
+        }
+    }
+
+
 
     public String toString() {
         String str = name + " Level: " + LVL;
