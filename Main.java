@@ -76,11 +76,15 @@ public class Main {
             if(currentTurn % 2 == 0) {
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
                 String line = in.nextLine();
-                if (line.equals("battle")) {
-                    System.out.println("What attack do you want?");
+                if (line.equals("Atk")) {
+                    menu = menuState.Attack;
+                    print(player, computer, menu, currentTurn);
+                    System.out.println("What Attack?");
                     String attackIn = in.nextLine();
-                    computer.getCurrentPokemon().setHP(computer.getCurrentPokemon().getHP()
-                            - player.getCurrentPokemon().getAttack()[Integer.parseInt(attackIn)].power);
+                    player.attack(attackIn, computer.getCurrentPokemon());
+                    ;
+                    ;
+                    menu = menuState.Battle;
                 }
                 else if (line.equals("Pok")) {
                     menu = menuState.Pokemon;
@@ -96,15 +100,6 @@ public class Main {
                     System.out.println("What Item?");
                     String itemIn = in.nextLine();
                     player.addToBag(new Item(itemIn, new Effect(3), 1));;
-                    menu = menuState.Battle;
-                }
-                else if (line.equals("Atk")) {
-                    menu = menuState.Bag;
-                    print(player, computer, menu, currentTurn);
-                    System.out.println("What Attack?");
-                    String attackIn = in.nextLine();
-                    player.attack(attackIn, computer.getCurrentPokemon());;
-                    ;
                     menu = menuState.Battle;
                 }
                 else if(line.equals("nothing")) {
