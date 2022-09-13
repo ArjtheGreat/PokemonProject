@@ -30,6 +30,7 @@ public class Main {
         String name = in.nextLine();
 
         Pokemon[] pokies = new Pokemon[6];
+        Pokemon[] computerPokies = new Pokemon[6];
 
         Attack[] attacks = new Attack[4];
         attacks[0] = new Attack(Type.Normal, 20, "Tackle");
@@ -45,12 +46,12 @@ public class Main {
         pokies[4] = new Pokemon(Type.Ghost, Type.Fairy, 30, 90, 70, 40, "Pikachu", attacks);
         pokies[5] = new Pokemon(Type.Fire, Type.Fighting, 80, 130, 90, 80, "Infernape", attacks);
 
-        pokies[0] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pikachu", attacks);
-        pokies[1] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Pichu", attacks);
-        pokies[2] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Daemon", attacks);
-        pokies[3] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Rhaenyra", attacks);
-        pokies[4] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Danaerys", attacks);
-        pokies[5] = new Pokemon(Type.Fire, Type.Water, 3, 100, 10, 10, "Jon Snow", attacks);
+        computerPokies[0] = new Pokemon(Type.Ghost, Type.Dragon, 66, 180, 95, 110, "Giratina", attacks);
+        computerPokies[1] = new Pokemon(Type.Water, Type.None, 60, 85, 75, 88, "Pichu", attacks);
+        computerPokies[2] = new Pokemon(Type.Poison, Type.None, 38, 50, 40, 35, "Garbodor", attacks);
+        computerPokies[3] = new Pokemon(Type.Dark, Type.None, 52, 84, 20, 20, "Persian", attacks);
+        computerPokies[4] = new Pokemon(Type.Grass, Type.Fairy, 30, 20, 5, 10, "Shiinotic", attacks);
+        computerPokies[5] = new Pokemon(Type.Bug, Type.Water, 33, 30, 30, 40, "Golisopod", attacks);
 
         ArrayList<Item> items = new ArrayList<Item>();
         items.add(new Item("Item 1", new Effect(3), 3));
@@ -110,6 +111,7 @@ public class Main {
                 }
             }
             else {
+                System.out.println("Opponent's Turn: ");
                 Random rand = new Random();
                 int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
                 
@@ -119,7 +121,6 @@ public class Main {
                     player.switchCurrentPokemon("Pichu");
                 }
             }
-            print(player, computer, menu, currentTurn);
             currentTurn++;
         }
 
