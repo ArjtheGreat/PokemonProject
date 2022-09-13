@@ -32,6 +32,16 @@ public class Player {
         return pokemons[0];
     }
 
+    public void attack(String inAttack, Pokemon enemyPokemon) {
+        int index = 0;
+        for(int i = 0; i<getCurrentPokemon().getAttack().length; i++) {
+            if(inAttack.equals(getCurrentPokemon().getAttack()[i].getName())) {
+                index = i;
+            }
+        }
+        enemyPokemon.setHP(enemyPokemon.HP - getCurrentPokemon().getAttack()[index].power);
+    }
+
     // Will Move the Current Pokemon to Front of The Array ()
     public void switchCurrentPokemon(String inPokieName) {
         for(int i = 0; i<pokemons.length; i++) {

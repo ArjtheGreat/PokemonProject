@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Default Starts As Battle
-        menuState menu = menuState.Pokemon;
+        menuState menu = menuState.Battle;
         userSelection(menu);
     }
 
@@ -82,11 +82,30 @@ public class Main {
                     computer.getCurrentPokemon().setHP(computer.getCurrentPokemon().getHP()
                             - player.getCurrentPokemon().getAttack()[Integer.parseInt(attackIn)].power);
                 }
-                else if (line.equals("new")) {
+                else if (line.equals("Pok")) {
                     menu = menuState.Pokemon;
+                    print(player, computer, menu, currentTurn);
                     System.out.println("Name of Pokemon");
                     String pokemonIn = in.nextLine();
                     player.switchCurrentPokemon(pokemonIn);
+                    menu = menuState.Battle;
+                }
+                else if (line.equals("Bag")) {
+                    menu = menuState.Bag;
+                    print(player, computer, menu, currentTurn);
+                    System.out.println("What Item?");
+                    String itemIn = in.nextLine();
+                    player.addToBag(new Item(itemIn, new Effect(3), 1));;
+                    menu = menuState.Battle;
+                }
+                else if (line.equals("Atk")) {
+                    menu = menuState.Bag;
+                    print(player, computer, menu, currentTurn);
+                    System.out.println("What Attack?");
+                    String attackIn = in.nextLine();
+                    player.attack(attackIn, computer.getCurrentPokemon());;
+                    ;
+                    menu = menuState.Battle;
                 }
                 else if(line.equals("nothing")) {
 
