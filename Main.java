@@ -117,8 +117,14 @@ public class Main {
                 
                 player.getCurrentPokemon().setHP(
                         player.getCurrentPokemon().getHP() - computer.getCurrentPokemon().getAttack()[attackInt].power);
-                if (player.getCurrentPokemon().HP <= 0) {
-                    player.switchCurrentPokemon("Pichu");
+                if (player.getCurrentPokemon().getHP() <= 0) {
+                    System.out.println("Your pokemon fainted");
+                    menu = menuState.Pokemon;
+                    print(player, computer, menu, currentTurn);
+                    System.out.println("Name of Pokemon");
+                    String pokemonIn = in.nextLine();
+                    player.switchCurrentPokemon(pokemonIn);
+                    menu = menuState.Battle;
                 }
             }
             currentTurn++;
