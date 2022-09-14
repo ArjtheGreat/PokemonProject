@@ -93,4 +93,8 @@ public class Pokemon {
 
         return str;
     }
+
+    public void setStatusEffect(Effect effect) {
+        this.statusEffect = effect;
+    }
 }
