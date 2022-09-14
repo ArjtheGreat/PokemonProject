@@ -38,7 +38,7 @@ public class Main {
         attacks[2] = new Attack(Type.Water, 60, "Water Pulse");
         attacks[3] = new Attack(Type.Water, 100, "Hydro Pump");
 
-
+        // Pokemon Arrays
         pokies[0] = new Pokemon(Type.Water, Type.None, 3, 40, 10, 10, "Squirtle", attacks);
         pokies[1] = new Pokemon(Type.Fairy, Type.Normal, 10, 100, 20, 20, "Jigglypuff", attacks);
         pokies[2] = new Pokemon(Type.Flying, Type.Dragon, 100, 150, 100, 100, "Rayquaza", attacks);
@@ -59,6 +59,7 @@ public class Main {
         items.add(new Item("Item 3", new Effect(3), 3));
         items.add(new Item("Item 4", new Effect(3), 3));
 
+        // Custom Player 
         Player player = new Player(name, pokies, items);        
 
         Pokemon[] newPokies = new Pokemon[6];
@@ -68,15 +69,21 @@ public class Main {
         newPokies[2] = new Pokemon(Type.Fire, Type.None, 3, 100, 10, 10, "Charmander", attacks);
         newPokies[1] = new Pokemon(Type.Water, Type.None, 3, 100, 10, 10, "Kyogre", attacks);
         newPokies[0] = new Pokemon(Type.Grass, Type.Poison, 3, 100, 10, 10, "Bulbasaur", attacks);
+        
+        // Computer Opponent
         Player computer = new Player("computer", newPokies, items);
 
-        int currentTurn = 0;
+        int currentTurn = 0; // Player or Computer Turn
+
+        // A Bunch of menus
         while(true) {
             print(player,computer,menu, currentTurn);
             //menu = menuState.Battle;
-            if(currentTurn % 2 == 0) {
+            if(currentTurn % 2 == 0) { // players turn
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
                 String line = in.nextLine();
+
+                // Select Attack Menu
                 if (line.equals("Atk")) {
                     menu = menuState.Attack;
                     print(player, computer, menu, currentTurn);
@@ -87,14 +94,34 @@ public class Main {
                     ;
                     menu = menuState.Battle;
                 }
+
+                // Select Pokemon Menu
                 else if (line.equals("Pok")) {
                     menu = menuState.Pokemon;
                     print(player, computer, menu, currentTurn);
-                    System.out.println("Name of Pokemon");
-                    String pokemonIn = in.nextLine();
-                    player.switchCurrentPokemon(pokemonIn);
+
+                    // Makes the player select a new VALID Pokemon. error handling be like
+                    boolean hasChosenAPokemon = false;
+                    while (!hasChosenAPokemon) {
+                        System.out.println("Name of Pokemon");
+                        String pokemonIn = in.nextLine();
+                        if (!player.isInPokemonArray(pokemonIn)) {
+                            System.out.println("Invalid Pokemon. Please Renter");
+                            print(player, computer, menu, currentTurn);
+                        }
+                        else if (pokemonIn.contains("(Fainted)")) {
+                            System.out.println("This Pokemon has Fainted. Select Another");
+                            print(player, computer, menu, currentTurn);
+                        } else {
+                            player.switchCurrentPokemon(pokemonIn);
+                            hasChosenAPokemon = true;
+                        }
+                        
+                    }
                     menu = menuState.Battle;
                 }
+
+                // Select Bag Menu
                 else if (line.equals("Bag")) {
                     menu = menuState.Bag;
                     print(player, computer, menu, currentTurn);
@@ -103,27 +130,58 @@ public class Main {
                     player.addToBag(new Item(itemIn, new Effect(3), 1));;
                     menu = menuState.Battle;
                 }
+                // Test
                 else if(line.equals("nothing")) {
 
                 } 
+                // Goodbye
                 else {
                     System.exit(0);
                 }
             }
             else {
+                // Selects New Pokemon For Computer. If All Pokemon Are Ded, End Game
+                if(computer.getCurrentPokemon().getHP() <= 0) {
+                    computer.getCurrentPokemon().setName(computer.getCurrentPokemon().getName() + " (Fainted)");
+                    for(int i = 1; i <computer.getPokemons().length; i++) {
+                        if(!computer.getPokemons()[i].getName().contains("(Fainted)")) {
+                            computer.switchCurrentPokemon(computer.getPokemons()[i].getName());
+                        }
+                    }
+                    if(computer.getPokemons()[0].getName().contains("(Fainted)")) {
+                        System.out.println("YOU WON. COMPUTER LOST.");
+                        System.exit(0);
+                    }
+                }
                 System.out.println("Opponent's Turn: ");
                 Random rand = new Random();
                 int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
                 
+                // Selects New Pokemon For Player If Fainted
                 player.getCurrentPokemon().setHP(
                         player.getCurrentPokemon().getHP() - computer.getCurrentPokemon().getAttack()[attackInt].power);
                 if (player.getCurrentPokemon().getHP() <= 0) {
+                    player.getCurrentPokemon().setName(player.getCurrentPokemon().getName() + " (Fainted)");
                     System.out.println("Your pokemon fainted");
                     menu = menuState.Pokemon;
                     print(player, computer, menu, currentTurn);
-                    System.out.println("Name of Pokemon");
-                    String pokemonIn = in.nextLine();
-                    player.switchCurrentPokemon(pokemonIn);
+                    boolean hasChosenAPokemon = false;
+                    while(!hasChosenAPokemon) {
+                        System.out.println("Name of Pokemon");
+                        String pokemonIn = in.nextLine();
+                        if(!player.isInPokemonArray(pokemonIn)) {
+                            System.out.println("Invalid Pokemon. Please Renter");
+                        }
+                        if(pokemonIn.contains("(Fainted)")) {
+                            System.out.println("This Pokemon has Fainted");
+                        }
+                        else {
+                            player.switchCurrentPokemon(pokemonIn);
+                            hasChosenAPokemon = true;
+                        }
+                    }
+                    
+                    
                     menu = menuState.Battle;
                 }
             }
@@ -149,7 +207,7 @@ public class Main {
 
         } 
 
-        // By Maitra
+        // By Maitra But Using Nico's Code Base
         else if (menu == menuState.Attack) {
             String spaces = "                             ";
             System.out.print("*****************************\n*");

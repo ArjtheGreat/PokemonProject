@@ -20,8 +20,9 @@ Main.Type getType1()  <br />
 Main.Type getType2()  <br />
 public int getLVL()  <br />
 public int getHP()  <br />
-public void setHP(int HP)  <br />
 public String getName()  <br />
+public void setHP(int HP)  <br />
+public void setName(String name)  <br />
 public String toString() - prints out the Pokemon in a specific way to suit the UI  <br />
 
 Attack <br />

@@ -42,15 +42,22 @@ public class Pokemon {
     public int getHP() {
         return HP;
     }
-    public void setHP(int HP){
-        this.HP = HP;
-    }
+    
     public String getName() {
         return name;
     }
     
     public Attack[] getAttack() {
         return attacks;
+    }
+
+    // Mutators
+    public void setHP(int HP) {
+        this.HP = HP;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setStatusEffect(Pokemon pokemon, Effect effect){
