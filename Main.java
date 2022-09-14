@@ -71,7 +71,7 @@ public class Main {
         newPokies[0] = new Pokemon(Type.Grass, Type.Poison, 3, 100, 10, 10, "Bulbasaur", attacks);
         
         // Computer Opponent
-        Player computer = new Player("computer", newPokies, items);
+        Player computer = new Player("computer", computerPokies, items);
 
         int currentTurn = 0; // Player or Computer Turn
 

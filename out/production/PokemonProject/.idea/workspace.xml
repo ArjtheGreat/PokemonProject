@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1576ddd3-b79e-4673-b99b-a481d297d650" name="Changes" comment="Pokemon Type/Party work">
-      <change beforePath="$PROJECT_DIR$/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/Effect.java" afterDir="false" />
-    </list>
+    <list default="true" id="1576ddd3-b79e-4673-b99b-a481d297d650" name="Changes" comment="Effect Work" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +85,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662997653691</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Pokemon Type/Party work">
+      <created>1663097406717</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1663097406717</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Effect Work">
+      <created>1663185978785</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1663185978785</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,7 +118,8 @@
     <MESSAGE value="Print method work" />
     <MESSAGE value="Item switch case work" />
     <MESSAGE value="Pokemon Type/Party work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pokemon Type/Party work" />
+    <MESSAGE value="Effect Work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Effect Work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -24,7 +24,7 @@ public class Pokemon {
         double attackCalc = LVL*(1+(attackBase/10)) + attackBase;
         double defenseCalc = LVL*(1+(defenseBase/30)) + defenseBase;
         this.startingHP = (int) HPCalc;
-        HP = startingHP;
+        this.HP = (int) HPCalc;
         this.attack = (int) attackCalc;
         this.defense = (int) defenseCalc;
         this.attacks = attacks;
