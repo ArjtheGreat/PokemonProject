@@ -15,18 +15,8 @@ public class Item {
     }
 
     public void consumeItem(Pokemon pokemon){
-        switch(effect.numEffect){
-            case(0):
-                pokemon.setHP(pokemon.HP + 20); break;
-            case(1):
-                pokemon.setHP(pokemon.HP + 50); break;
-            case(2):
-                pokemon.setHP(pokemon.HP + 100); break;
-            case(3):
-                System.out.println();
-
-        }
-        pokemon.setHP(pokemon.HP);
+        pokemon.setStatusEffect(effect);
+        quantity--;
     }
 
     // Accessors

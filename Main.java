@@ -33,10 +33,10 @@ public class Main {
         Pokemon[] computerPokies = new Pokemon[6];
 
         Attack[] attacks = new Attack[4];
-        attacks[0] = new Attack(Type.Normal, 20, "Tackle");
-        attacks[1] = new Attack(Type.Water, 40, "Aqua Jet");
-        attacks[2] = new Attack(Type.Water, 60, "Water Pulse");
-        attacks[3] = new Attack(Type.Water, 100, "Hydro Pump");
+        attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
+        attacks[1] = new Attack(Type.Water, 40, "Aqua Jet", null);
+        attacks[2] = new Attack(Type.Water, 60, "Water Pulse", null);
+        attacks[3] = new Attack(Type.Water, 100, "Hydro Pump", null);
 
         // Pokemon Arrays
         pokies[0] = new Pokemon(Type.Water, Type.None, 3, 40, 10, 10, "Squirtle", attacks);

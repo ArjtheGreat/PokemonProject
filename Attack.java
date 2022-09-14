@@ -7,11 +7,13 @@ public class Attack {
     Main.Type type;
     int power;
     String name;
+    Effect effect;
 
-    public Attack(Main.Type type, int power, String name){
+    public Attack(Main.Type type, int power, String name, Effect effect){
         this.type = type;
         this.power = power;
         this.name = name;
+        this.effect = effect;
     }
 
     // Accessors
@@ -25,6 +27,10 @@ public class Attack {
 
     public String getName() {
         return name;
+    }
+
+    public Effect getEffect(){
+        return effect;
     }
 }
 
