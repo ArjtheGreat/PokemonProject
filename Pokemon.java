@@ -64,6 +64,26 @@ public class Pokemon {
         if(statusEffect.equals(Effect.allEffects.burn)){
             HP -= startingHP/4;
         }
+        if(statusEffect.equals(Effect.allEffects.heal20)){
+            HP += 20;
+            statusEffect = null;
+        }
+        if(statusEffect.equals(Effect.allEffects.heal50)){
+            HP += 50;
+            statusEffect = null;
+        }
+        if(statusEffect.equals(Effect.allEffects.heal100)){
+            HP += 100;
+            statusEffect = null;
+        }
+        if(statusEffect.equals(Effect.allEffects.attackUp)){
+            attack += attack / 4;
+            statusEffect = null;
+        }
+        if(statusEffect.equals(Effect.allEffects.defenseUp)){
+            defense += defense / 4;
+            statusEffect = null;
+        }
     }
 
 

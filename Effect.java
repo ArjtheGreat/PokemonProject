@@ -4,7 +4,7 @@
 
 public class Effect {
     int numEffect;
-    enum allEffects { heal20, heal50, heal100, pokeballCatch, attackUp, defenseUp, attackDown, defenseDown, burn, poison, freeze};
+    enum allEffects { heal20, heal50, heal100, pokeballCatch, attackUp, defenseUp, burn, poison, freeze};
 
     public Effect(int numEffect){
         this.numEffect = numEffect;
