@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1576ddd3-b79e-4673-b99b-a481d297d650" name="Changes" comment="Effect Work" />
+    <list default="true" id="1576ddd3-b79e-4673-b99b-a481d297d650" name="Changes" comment="Effect Work">
+      <change beforePath="$PROJECT_DIR$/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokemon.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

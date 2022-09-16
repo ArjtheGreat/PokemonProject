@@ -91,6 +91,14 @@ public class Pokemon {
             defense += defense / 4;
             statusEffect = null;
         }
+        if(statusEffect.equals(Effect.allEffects.attackDown)){
+            attack -= attack / 4;
+            statusEffect = null;
+        }
+        if(statusEffect.equals(Effect.allEffects.defenseDown)){
+            defense -= defense / 4;
+            statusEffect = null;
+        }
     }
 
 

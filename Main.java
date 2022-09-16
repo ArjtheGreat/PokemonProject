@@ -38,6 +38,12 @@ public class Main {
         attacks[2] = new Attack(Type.Water, 60, "Water Pulse", null);
         attacks[3] = new Attack(Type.Water, 100, "Hydro Pump", null);
 
+        Attack[] attacks2 = new Attack[4];
+        attacks[0] = new Attack(Type.Fairy, 20, "Sparkles", null);
+        attacks[1] = new Attack(Type.Poison, 40, "Poison", new Effect(9));
+        attacks[2] = new Attack(Type.Dark, 60, "Dark Punch", null);
+        attacks[3] = new Attack(Type.Fighting, 100, "Punch", null);
+
         // Pokemon Arrays
         pokies[0] = new Pokemon(Type.Water, Type.None, 3, 40, 10, 10, "Squirtle", attacks);
         pokies[1] = new Pokemon(Type.Fairy, Type.Normal, 10, 100, 20, 20, "Jigglypuff", attacks);
@@ -60,15 +66,7 @@ public class Main {
         items.add(new Item("Item 4", new Effect(3), 3));
 
         // Custom Player 
-        Player player = new Player(name, pokies, items);        
-
-        Pokemon[] newPokies = new Pokemon[6];
-        newPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 3, 100, 10, 10, "Giratina", attacks);
-        newPokies[4] = new Pokemon(Type.Dark, Type.Rock, 3, 100, 10, 10, "Tyranitar", attacks);
-        newPokies[3] = new Pokemon(Type.Fire, Type.Flying, 3, 100, 10, 10, "Charizard", attacks);
-        newPokies[2] = new Pokemon(Type.Fire, Type.None, 3, 100, 10, 10, "Charmander", attacks);
-        newPokies[1] = new Pokemon(Type.Water, Type.None, 3, 100, 10, 10, "Kyogre", attacks);
-        newPokies[0] = new Pokemon(Type.Grass, Type.Poison, 3, 100, 10, 10, "Bulbasaur", attacks);
+        Player player = new Player(name, pokies, items);
         
         // Computer Opponent
         Player computer = new Player("computer", computerPokies, items);
