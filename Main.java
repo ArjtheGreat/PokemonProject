@@ -64,9 +64,18 @@ public class Main {
         items.add(new Item("Item 2", new Effect(3), 3));
         items.add(new Item("Item 3", new Effect(3), 3));
         items.add(new Item("Item 4", new Effect(3), 3));
+        items.add(new Item("Item 5", new Effect(3), 3));
 
         // Custom Player 
         Player player = new Player(name, pokies, items);
+
+        Pokemon[] newPokies = new Pokemon[6];
+        newPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 3, 100, 10, 10, "Giratina", attacks);
+        newPokies[5] = new Pokemon(Type.Dark, Type.Rock, 3, 100, 10, 10, "Tyranitar", attacks);
+        newPokies[3] = new Pokemon(Type.Fire, Type.Flying, 3, 100, 10, 10, "Charizard", attacks);
+        newPokies[2] = new Pokemon(Type.Fire, Type.None, 3, 100, 10, 10, "Charmander", attacks);
+        newPokies[1] = new Pokemon(Type.Water, Type.None, 3, 100, 10, 10, "Kyogre", attacks);
+        newPokies[0] = new Pokemon(Type.Grass, Type.Poison, 3, 100, 10, 10, "Bulbasaur", attacks);
         
         // Computer Opponent
         Player computer = new Player("computer", computerPokies, items);
@@ -222,18 +231,13 @@ public class Main {
         else if (menu == menuState.Bag) {
             String spaces = "                             ";
             System.out.print("*****************************\n*");
-            // 21
-            System.out.print("Bag                        *" + "\n*---------------------------*" + "\n*"
-                    + player1.getItems().get(0).getName()
-                    + spaces.substring(0, 27 - player1.getItems().get(0).getName().length()) + "*\n*"
-                    + player1.getItems().get(1).getName()
-                    + spaces.substring(0, 27 - player1.getItems().get(1).getName().length()) + "*\n*"
-                    + player1
-                            .getItems().get(2).getName()
-                    + spaces.substring(0, 27 - player1.getItems().get(2).getName().length()) + "*\n*"
-                    + player1
-                            .getItems().get(3).getName()
-                    + spaces.substring(0, 27 - player1.getItems().get(3).getName().length()) + "*\n*");
+            System.out.println("Items                      *" + "\n*---------------------------*");
+            //  21  
+            for(int i = 0; i<player1.getItems().size(); i++) {
+                String x = "*" +  player1.getItems().get(i).getQuantity() + "x " + player1.getItems().get(i).getName();
+                System.out.println(x
+                    + spaces.substring(0, 28 - x.length()) + "*");
+            }
 
             System.out.print("*****************************\n*");
         } 
