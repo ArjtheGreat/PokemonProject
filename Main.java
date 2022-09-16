@@ -90,8 +90,6 @@ public class Main {
                     System.out.println("What Attack?");
                     String attackIn = in.nextLine();
                     player.attack(attackIn, computer.getCurrentPokemon());
-                    ;
-                    ;
                     menu = menuState.Battle;
                 }
 
@@ -203,10 +201,11 @@ public class Main {
             String spaces1 = spaces.substring(0,20-player1.pokemons[0].toString().length());
             String playerLevelLine = "*    -|-"+spaces1+player1.pokemons[0].toString()+"*";
             String spaces2 = spaces.substring(0,20-("HP: "+player1.pokemons[0].HP).length());
-            System.out.print(playerLevelLine+"\n*    / \\"+spaces2+"HP: "+player1.pokemons[0].HP+"*\n*---------------------------*\n*");
-
-        } 
-
+            System.out.print(playerLevelLine+"\n*    / \\"+spaces2+"HP: "+player1.pokemons[0].HP+"*\n*---------------------------*\n");
+            System.out.println("*                   |Atk|Bag*");
+            System.out.println("*                   |Pok|Run*");
+            System.out.print("*****************************\n*");
+        }
         // By Maitra But Using Nico's Code Base
         else if (menu == menuState.Attack) {
             String spaces = "                             ";
