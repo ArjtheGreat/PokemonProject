@@ -112,6 +112,7 @@ public class Main {
                         String pokemonIn = in.nextLine();
                         if (!player.isInPokemonArray(pokemonIn)) {
                             System.out.println("Invalid Pokemon. Please Renter");
+                            menu = menuState.Pokemon;
                             print(player, computer, menu, currentTurn);
                         }
                         else if (pokemonIn.contains("(Fainted)")) {
@@ -134,6 +135,10 @@ public class Main {
                     String itemIn = in.nextLine();
                     player.addToBag(new Item(itemIn, new Effect(3), 1));;
                     menu = menuState.Battle;
+                }
+                else if(line.equals("Run")) {
+                    System.out.println("You ran away. Game over!");
+                    System.exit(0);
                 }
                 // Test
                 else if(line.equals("nothing")) {
@@ -177,7 +182,7 @@ public class Main {
                         if(!player.isInPokemonArray(pokemonIn)) {
                             System.out.println("Invalid Pokemon. Please Renter");
                         }
-                        if(pokemonIn.contains("(Fainted)")) {
+                        else if(pokemonIn.contains("(Fainted)")) {
                             System.out.println("This Pokemon has Fainted");
                         }
                         else {
