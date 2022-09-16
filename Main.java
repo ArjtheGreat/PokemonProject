@@ -242,26 +242,15 @@ public class Main {
         else {
             String spaces = "                             ";
             System.out.print("*****************************\n*");
-            // 21
-            System.out.print("Pokemon                    *" + "\n*---------------------------*" + "\n*"
-                    + player1.getPokemons()[0].getName()
-                    + spaces.substring(0, 27 - player1.getPokemons()[0].getName().length()) + "*\n*"
-                    + player1.getPokemons()[1].getName()
-                    + spaces.substring(0, 27 - player1.getPokemons()[1].getName().length()) + "*\n*"
-                    + player1
-                            .getPokemons()[2].getName()
-                    + spaces.substring(0, 27 - player1.getPokemons()[2].getName().length()) + "*\n*"
-                    + player1
-                            .getPokemons()[3].getName()
-                    + spaces.substring(0, 27 - player1.getPokemons()[3].getName().length()) 
-                    + "*\n*" + player1
-                            .getPokemons()[4].getName()
-                    + spaces.substring(0, 27 - player1.getPokemons()[4].getName().length()) + "*\n*" + player1
-                            .getPokemons()[5].getName()
-                    + spaces.substring(0, 27 - player1.getPokemons()[5].getName().length()) + "*\n*");
-                    
+            System.out.println("Pokemon                    *" + "\n*---------------------------*");
+            //  21  
+            for(int i = 0; i<player1.getPokemons().length; i++) {
+                String x = "*LVL " + player1.getPokemons()[i].getLVL() + " " + player1.getPokemons()[i].getName();
+                System.out.println(x
+                    + spaces.substring(0, 28 - x.length()) + "*");
+            }
 
-            System.out.print("****************************\n*");
+            System.out.print("*****************************\n*");
         }
 
     }
