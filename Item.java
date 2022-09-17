@@ -16,7 +16,6 @@ public class Item {
 
     public void consumeItem(Pokemon pokemon){
         pokemon.setStatusEffect(effect);
-        quantity--;
     }
 
     // Accessors

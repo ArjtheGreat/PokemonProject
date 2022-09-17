@@ -65,6 +65,7 @@ public class Pokemon {
     }
 
     public void effectTick(){
+        if(statusEffect != null){
         if(statusEffect.equals(Effect.allEffects.poison)){
             HP -= startingHP/6;
         }
@@ -98,6 +99,7 @@ public class Pokemon {
         if(statusEffect.equals(Effect.allEffects.defenseDown)){
             defense -= defense / 4;
             statusEffect = null;
+        }
         }
     }
 

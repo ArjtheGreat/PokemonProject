@@ -27,6 +27,11 @@ public class Player {
     public void addToBag(Item item) {
         items.add(item);
     }
+    public void removeFromBag(Item item) {
+        item.consumeItem(pokemons[0]);
+        item.setQuantity(item.quantity - 1);
+        if(item.getQuantity() == 0){items.remove(item);}
+    }
 
     public Pokemon getCurrentPokemon() {
         return pokemons[0];
@@ -39,7 +44,8 @@ public class Player {
                 index = i;
             }
         }
-        enemyPokemon.setHP(enemyPokemon.HP - getCurrentPokemon().getAttack()[index].power);
+        Main.attack(enemyPokemon,pokemons[0],getCurrentPokemon().getAttack()[index]);
+        enemyPokemon.setStatusEffect(enemyPokemon,getCurrentPokemon().getAttack()[index].getEffect());
     }
 
     // Will Move the Current Pokemon to Front of The Array ()

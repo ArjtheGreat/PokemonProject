@@ -7,6 +7,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    public static String textBox;
+    public static String[] splitText = new String[2];
+    public static String splitTextSpace = "                   ";
     public enum Type{None, Normal, Fire, Water, Grass, Flying, Fighting, Poison, Electric, Ground, Rock, Psychic, Ice, Bug, Ghost, Steel, Dragon, Dark, Fairy}
 
     // Enum Controls Menu State (code by Maitra)
@@ -15,6 +18,7 @@ public class Main {
     };
 
     public static void main(String[] args) {
+        s
         // Default Starts As Battle
         menuState menu = menuState.Battle;
         userSelection(menu);
@@ -39,25 +43,47 @@ public class Main {
         attacks[3] = new Attack(Type.Water, 100, "Hydro Pump", null);
 
         Attack[] attacks2 = new Attack[4];
-        attacks[0] = new Attack(Type.Fairy, 20, "Sparkles", null);
-        attacks[1] = new Attack(Type.Poison, 40, "Poison", new Effect(9));
-        attacks[2] = new Attack(Type.Dark, 60, "Dark Punch", null);
-        attacks[3] = new Attack(Type.Fighting, 100, "Punch", null);
+        attacks2[0] = new Attack(Type.Fairy, 20, "Sparkles", null);
+        attacks2[1] = new Attack(Type.Poison, 10, "Poison", new Effect(9));
+        attacks2[2] = new Attack(Type.Dark, 50, "Dark Punch", null);
+        attacks2[3] = new Attack(Type.Fighting, 70, "Punch", null);
+
+        Attack[] attacks3 = new Attack[4];
+        attacks3[0] = new Attack(Type.Fighting, 50, "Strength", new Effect(4));
+        attacks3[1] = new Attack(Type.Poison, 10, "Poison", new Effect(9));
+        attacks3[2] = new Attack(Type.Fire, 60, "Dark Punch", new Effect(8));
+        attacks3[3] = new Attack(Type.Dragon, 80, "Dragon Punch", null);
+
+        Attack[] attacks4 = new Attack[4];
+        attacks4[0] = new Attack(Type.Rock, 80, "Boulder", null);
+        attacks4[1] = new Attack(Type.Grass, 35, "Roots",null);
+        attacks4[2] = new Attack(Type.Steel, 70,"Metal Punch",null);
+        attacks4[3] = new Attack(Type.Normal, 20, "Stonewall",new Effect(5));
+
+        Attack[] attacks5 = new Attack[4];
+        Attack[] attacks6 = new Attack[4];
+
+        Attack[] enemyAttacks = new Attack[4];
+        Attack[] enemyAttacks2 = new Attack[4];
+        Attack[] enemyAttacks3 = new Attack[4];
+        Attack[] enemyAttacks4 = new Attack[4];
+        Attack[] enemyAttacks5 = new Attack[4];
+        Attack[] enemyAttacks6 = new Attack[4];
 
         // Pokemon Arrays
         pokies[0] = new Pokemon(Type.Water, Type.None, 3, 40, 10, 10, "Squirtle", attacks);
-        pokies[1] = new Pokemon(Type.Fairy, Type.Normal, 10, 100, 20, 20, "Jigglypuff", attacks);
-        pokies[2] = new Pokemon(Type.Flying, Type.Dragon, 100, 150, 100, 100, "Rayquaza", attacks);
-        pokies[3] = new Pokemon(Type.Grass, Type.Steel, 40, 120, 30, 70, "Ferrothorn", attacks);
-        pokies[4] = new Pokemon(Type.Ghost, Type.Fairy, 30, 90, 70, 40, "Pikachu", attacks);
-        pokies[5] = new Pokemon(Type.Fire, Type.Fighting, 80, 130, 90, 80, "Infernape", attacks);
+        pokies[1] = new Pokemon(Type.Fairy, Type.Normal, 10, 100, 20, 20, "Jigglypuff", attacks2);
+        pokies[2] = new Pokemon(Type.Flying, Type.Dragon, 100, 150, 100, 100, "Rayquaza", attacks3);
+        pokies[3] = new Pokemon(Type.Grass, Type.Steel, 40, 120, 30, 70, "Ferrothorn", attacks4);
+        pokies[4] = new Pokemon(Type.Ghost, Type.Fairy, 30, 90, 70, 40, "Pikachu", attacks5);
+        pokies[5] = new Pokemon(Type.Fire, Type.Fighting, 80, 130, 90, 80, "Infernape", attacks6);
 
-        computerPokies[0] = new Pokemon(Type.Ghost, Type.Dragon, 66, 180, 95, 110, "Giratina", attacks);
-        computerPokies[1] = new Pokemon(Type.Water, Type.None, 60, 85, 75, 88, "Pichu", attacks);
-        computerPokies[2] = new Pokemon(Type.Poison, Type.None, 38, 50, 40, 35, "Garbodor", attacks);
-        computerPokies[3] = new Pokemon(Type.Dark, Type.None, 52, 84, 20, 20, "Persian", attacks);
-        computerPokies[4] = new Pokemon(Type.Grass, Type.Fairy, 30, 20, 5, 10, "Shiinotic", attacks);
-        computerPokies[5] = new Pokemon(Type.Bug, Type.Water, 33, 30, 30, 40, "Golisopod", attacks);
+        computerPokies[0] = new Pokemon(Type.Water, Type.None, 60, 85, 75, 88, "Pichu", attacks);
+        computerPokies[1] = new Pokemon(Type.Poison, Type.None, 38, 50, 40, 35, "Garbodor", attacks);
+        computerPokies[2] = new Pokemon(Type.Dark, Type.None, 52, 84, 20, 20, "Persian", attacks);
+        computerPokies[3] = new Pokemon(Type.Grass, Type.Fairy, 30, 20, 5, 10, "Shiinotic", attacks);
+        computerPokies[4] = new Pokemon(Type.Bug, Type.Water, 33, 30, 30, 40, "Golisopod", attacks);
+        computerPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 66, 180, 95, 110, "Giratina", attacks);
 
         ArrayList<Item> items = new ArrayList<Item>();
         items.add(new Item("Item 1", new Effect(3), 3));
@@ -69,14 +95,6 @@ public class Main {
         // Custom Player 
         Player player = new Player(name, pokies, items);
 
-        Pokemon[] newPokies = new Pokemon[6];
-        newPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 3, 100, 10, 10, "Giratina", attacks);
-        newPokies[5] = new Pokemon(Type.Dark, Type.Rock, 3, 100, 10, 10, "Tyranitar", attacks);
-        newPokies[3] = new Pokemon(Type.Fire, Type.Flying, 3, 100, 10, 10, "Charizard", attacks);
-        newPokies[2] = new Pokemon(Type.Fire, Type.None, 3, 100, 10, 10, "Charmander", attacks);
-        newPokies[1] = new Pokemon(Type.Water, Type.None, 3, 100, 10, 10, "Kyogre", attacks);
-        newPokies[0] = new Pokemon(Type.Grass, Type.Poison, 3, 100, 10, 10, "Bulbasaur", attacks);
-        
         // Computer Opponent
         Player computer = new Player("computer", computerPokies, items);
 
@@ -87,6 +105,7 @@ public class Main {
             print(player,computer,menu, currentTurn);
             //menu = menuState.Battle;
             if(currentTurn % 2 == 0) { // players turn
+                pokies[0].effectTick();
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
                 String line = in.nextLine();
 
@@ -97,6 +116,9 @@ public class Main {
                     System.out.println("What Attack?");
                     String attackIn = in.nextLine();
                     player.attack(attackIn, computer.getCurrentPokemon());
+                    textBox = pokies[0] + " used " + attackIn;
+                    splitText[0] = textBox.substring(0, 18);
+                    splitText[1] = textBox.substring(19, 37);
                     menu = menuState.Battle;
                 }
 
@@ -131,9 +153,13 @@ public class Main {
                 else if (line.equals("Bag")) {
                     menu = menuState.Bag;
                     print(player, computer, menu, currentTurn);
-                    System.out.println("What Item?");
+                    System.out.println("What item would you like to use?");
                     String itemIn = in.nextLine();
-                    player.addToBag(new Item(itemIn, new Effect(3), 1));;
+                    for(int i = 0;i < items.size();i++){
+                        if(items.get(i).getName().equals(itemIn)){
+                            player.removeFromBag(items.get(i));
+                        }
+                    }
                     menu = menuState.Battle;
                 }
                 else if(line.equals("Run")) {
@@ -150,6 +176,7 @@ public class Main {
                 }
             }
             else {
+                computerPokies[0].effectTick();
                 // Selects New Pokemon For Computer. If All Pokemon Are Ded, End Game
                 if(computer.getCurrentPokemon().getHP() <= 0) {
                     computer.getCurrentPokemon().setName(computer.getCurrentPokemon().getName() + " (Fainted)");
@@ -166,6 +193,9 @@ public class Main {
                 System.out.println("Opponent's Turn: ");
                 Random rand = new Random();
                 int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
+                textBox = pokies[0] + " used an attack!" ;
+                splitText[0] = textBox.substring(0, 18);
+                splitText[1] = textBox.substring(19, 37);
                 
                 // Selects New Pokemon For Player If Fainted
                 player.getCurrentPokemon().setHP(
@@ -214,8 +244,8 @@ public class Main {
             String playerLevelLine = "*    -|-"+spaces1+player1.pokemons[0].toString()+"*";
             String spaces2 = spaces.substring(0,20-("HP: "+player1.pokemons[0].HP).length());
             System.out.print(playerLevelLine+"\n*    / \\"+spaces2+"HP: "+player1.pokemons[0].HP+"*\n*---------------------------*\n");
-            System.out.println("*                   |Atk|Bag*");
-            System.out.println("*                   |Pok|Run*");
+            System.out.println("*" +splitText[0]+"|Atk|Bag*");
+            System.out.println("*"+splitText[1]+"|Pok|Run*");
             System.out.print("*****************************\n*");
         }
         // By Maitra But Using Nico's Code Base
@@ -243,7 +273,6 @@ public class Main {
                 System.out.println(x
                     + spaces.substring(0, 28 - x.length()) + "*");
             }
-
             System.out.print("*****************************\n*");
         } 
         else {
@@ -298,184 +327,184 @@ public class Main {
         //Damage Equation
         double damage = (((((2*attacker.LVL*critical)/5)+2) * power * (attacker.attack / pokemon.defense))/50)+2;
 
-        if((attack.type != Type.Ghost && attack.type != Type.Dragon && attack.type != Type.Normal && attack.type != Type.Bug && attack.type != Type.Flying
-                && attack.type != Type.Fairy && attack.type != Type.Fighting && attack.type != Type.Rock && attack.type != Type.Ground) && (attack.type == pokemon.Type1 || attack.type == pokemon.Type2)){
+        if((attack.getType() != Type.Ghost && attack.getType() != Type.Dragon && attack.getType() != Type.Normal && attack.getType() != Type.Bug && attack.getType() != Type.Flying
+                && attack.getType() != Type.Fairy && attack.getType() != Type.Fighting && attack.getType() != Type.Rock && attack.getType() != Type.Ground) && (attack.getType() == pokemon.getType1() || attack.getType() == pokemon.getType2())){
             damage /= 2; //Type Resistance to itself applies to half of all types
         }   //Those that don't resist themselves include Ghost Dragon Normal Bug Flying Fairy Fighting Rock Ground
 
-        if(attack.type == Type.Normal){ //Normal
-            if(pokemon.Type1 == Type.Ghost || pokemon.Type2 == Type.Ghost){damage = 0;}
+        if(attack.getType() == Type.Normal){ //Normal
+            if(pokemon.getType1() == Type.Ghost || pokemon.getType2() == Type.Ghost){damage = 0;}
 
-            if(pokemon.Type1 == Type.Rock || pokemon.Type2 == Type.Rock){damage /= 2;}
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Rock || pokemon.getType2() == Type.Rock){damage /= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage /= 2;}
         }
-        else if(attack.type == Type.Fire){ //Fire
-            if(pokemon.Type1 == Type.Bug || pokemon.Type2 == Type.Bug){damage *= 2;}
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage *= 2;}
-            if(pokemon.Type1 == Type.Grass || pokemon.Type2 == Type.Grass){damage *= 2;}
-            if(pokemon.Type1 == Type.Ice || pokemon.Type2 == Type.Ice){damage *= 2;}
+        else if(attack.getType() == Type.Fire){ //Fire
+            if(pokemon.getType1() == Type.Bug || pokemon.getType2() == Type.Bug){damage *= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage *= 2;}
+            if(pokemon.getType1() == Type.Grass || pokemon.getType2() == Type.Grass){damage *= 2;}
+            if(pokemon.getType1() == Type.Ice || pokemon.getType2() == Type.Ice){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Rock || pokemon.Type2 == Type.Rock){damage /= 2;}
-            if(pokemon.Type1 == Type.Water || pokemon.Type2 == Type.Water){damage /= 2;}
-            if(pokemon.Type1 == Type.Dragon || pokemon.Type2 == Type.Dragon){damage /= 2;}
+            if(pokemon.getType1() == Type.Rock || pokemon.getType2() == Type.Rock){damage /= 2;}
+            if(pokemon.getType1() == Type.Water || pokemon.getType2() == Type.Water){damage /= 2;}
+            if(pokemon.getType1() == Type.Dragon || pokemon.getType2() == Type.Dragon){damage /= 2;}
         }
-        else if(attack.type == Type.Water){ //Water
-            if(pokemon.Type1 == Type.Fire || pokemon.Type2 == Type.Fire){damage *= 2;}
-            if(pokemon.Type1 == Type.Rock || pokemon.Type2 == Type.Rock){damage *= 2;}
-            if(pokemon.Type1 == Type.Ground || pokemon.Type2 == Type.Ground){damage *= 2;}
+        else if(attack.getType() == Type.Water){ //Water
+            if(pokemon.getType1() == Type.Fire || pokemon.getType2() == Type.Fire){damage *= 2;}
+            if(pokemon.getType1() == Type.Rock || pokemon.getType2() == Type.Rock){damage *= 2;}
+            if(pokemon.getType1() == Type.Ground || pokemon.getType2() == Type.Ground){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Grass || pokemon.Type2 == Type.Grass){damage /= 2;}
-            if(pokemon.Type1 == Type.Electric || pokemon.Type2 == Type.Electric){damage /= 2;}
+            if(pokemon.getType1() == Type.Grass || pokemon.getType2() == Type.Grass){damage /= 2;}
+            if(pokemon.getType1() == Type.Electric || pokemon.getType2() == Type.Electric){damage /= 2;}
         }
-        else if(attack.type == Type.Grass){ //Grass
-            if(pokemon.Type1 == Type.Water || pokemon.Type2 == Type.Water){damage *= 2;}
-            if(pokemon.Type1 == Type.Rock || pokemon.Type2 == Type.Rock){damage *= 2;}
-            if(pokemon.Type1 == Type.Ground || pokemon.Type2 == Type.Ground){damage *= 2;}
+        else if(attack.getType() == Type.Grass){ //Grass
+            if(pokemon.getType1() == Type.Water || pokemon.getType2() == Type.Water){damage *= 2;}
+            if(pokemon.getType1() == Type.Rock || pokemon.getType2() == Type.Rock){damage *= 2;}
+            if(pokemon.getType1() == Type.Ground || pokemon.getType2() == Type.Ground){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Flying || pokemon.Type2 == Type.Flying){damage /= 2;}
-            if(pokemon.Type1 == Type.Poison || pokemon.Type2 == Type.Poison){damage /= 2;}
-            if(pokemon.Type1 == Type.Bug || pokemon.Type2 == Type.Bug){damage /= 2;}
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage /= 2;}
-            if(pokemon.Type1 == Type.Fire || pokemon.Type2 == Type.Fire){damage /= 2;}
-            if(pokemon.Type1 == Type.Dragon || pokemon.Type2 == Type.Dragon){damage /= 2;}
+            if(pokemon.getType1() == Type.Flying || pokemon.getType2() == Type.Flying){damage /= 2;}
+            if(pokemon.getType1() == Type.Poison || pokemon.getType2() == Type.Poison){damage /= 2;}
+            if(pokemon.getType1() == Type.Bug || pokemon.getType2() == Type.Bug){damage /= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Fire || pokemon.getType2() == Type.Fire){damage /= 2;}
+            if(pokemon.getType1() == Type.Dragon || pokemon.getType2() == Type.Dragon){damage /= 2;}
         }
-        else if(attack.type == Type.Flying){ //Flying
-            if(pokemon.Type1 == Type.Fighting || pokemon.Type2 == Type.Fighting){damage *= 2;}
-            if(pokemon.Type1 == Type.Bug || pokemon.Type2 == Type.Bug){damage *= 2;}
-            if(pokemon.Type1 == Type.Grass || pokemon.Type2 == Type.Grass){damage *= 2;}
+        else if(attack.getType() == Type.Flying){ //Flying
+            if(pokemon.getType1() == Type.Fighting || pokemon.getType2() == Type.Fighting){damage *= 2;}
+            if(pokemon.getType1() == Type.Bug || pokemon.getType2() == Type.Bug){damage *= 2;}
+            if(pokemon.getType1() == Type.Grass || pokemon.getType2() == Type.Grass){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Rock || pokemon.Type2 == Type.Rock){damage /= 2;}
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage /= 2;}
-            if(pokemon.Type1 == Type.Electric || pokemon.Type2 == Type.Electric){damage /= 2;}
+            if(pokemon.getType1() == Type.Rock || pokemon.getType2() == Type.Rock){damage /= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Electric || pokemon.getType2() == Type.Electric){damage /= 2;}
         }
-        else if(attack.type == Type.Fighting){ //Fighting
-            if(pokemon.Type1 == Type.Ghost || pokemon.Type2 == Type.Ghost){damage = 0;}
+        else if(attack.getType() == Type.Fighting){ //Fighting
+            if(pokemon.getType1() == Type.Ghost || pokemon.getType2() == Type.Ghost){damage = 0;}
 
-            if(pokemon.Type1 == Type.Normal || pokemon.Type2 == Type.Normal){damage *= 2;}
-            if(pokemon.Type1 == Type.Rock || pokemon.Type2 == Type.Rock){damage *= 2;}
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage *= 2;}
-            if(pokemon.Type1 == Type.Ice || pokemon.Type2 == Type.Ice){damage *= 2;}
-            if(pokemon.Type1 == Type.Dark || pokemon.Type2 == Type.Dark){damage *= 2;}
+            if(pokemon.getType1() == Type.Normal || pokemon.getType2() == Type.Normal){damage *= 2;}
+            if(pokemon.getType1() == Type.Rock || pokemon.getType2() == Type.Rock){damage *= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage *= 2;}
+            if(pokemon.getType1() == Type.Ice || pokemon.getType2() == Type.Ice){damage *= 2;}
+            if(pokemon.getType1() == Type.Dark || pokemon.getType2() == Type.Dark){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Flying || pokemon.Type2 == Type.Flying){damage /= 2;}
-            if(pokemon.Type1 == Type.Poison || pokemon.Type2 == Type.Poison){damage /= 2;}
-            if(pokemon.Type1 == Type.Bug || pokemon.Type2 == Type.Bug){damage /= 2;}
-            if(pokemon.Type1 == Type.Psychic || pokemon.Type2 == Type.Psychic){damage /= 2;}
-            if(pokemon.Type1 == Type.Fairy || pokemon.Type2 == Type.Fairy){damage /= 2;}
+            if(pokemon.getType1() == Type.Flying || pokemon.getType2() == Type.Flying){damage /= 2;}
+            if(pokemon.getType1() == Type.Poison || pokemon.getType2() == Type.Poison){damage /= 2;}
+            if(pokemon.getType1() == Type.Bug || pokemon.getType2() == Type.Bug){damage /= 2;}
+            if(pokemon.getType1() == Type.Psychic || pokemon.getType2() == Type.Psychic){damage /= 2;}
+            if(pokemon.getType1() == Type.Fairy || pokemon.getType2() == Type.Fairy){damage /= 2;}
         }
-        else if(attack.type == Type.Poison){ //Poison
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage = 0;}
+        else if(attack.getType() == Type.Poison){ //Poison
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage = 0;}
 
-            if(pokemon.Type1 == Type.Grass || pokemon.Type2 == Type.Grass){damage *= 2;}
-            if(pokemon.Type1 == Type.Fairy || pokemon.Type2 == Type.Fairy){damage *= 2;}
+            if(pokemon.getType1() == Type.Grass || pokemon.getType2() == Type.Grass){damage *= 2;}
+            if(pokemon.getType1() == Type.Fairy || pokemon.getType2() == Type.Fairy){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Ground || pokemon.Type2 == Type.Ground){damage /= 2;}
-            if(pokemon.Type1 == Type.Rock || pokemon.Type2 == Type.Rock){damage /= 2;}
-            if(pokemon.Type1 == Type.Ghost || pokemon.Type2 == Type.Ghost){damage /= 2;}
+            if(pokemon.getType1() == Type.Ground || pokemon.getType2() == Type.Ground){damage /= 2;}
+            if(pokemon.getType1() == Type.Rock || pokemon.getType2() == Type.Rock){damage /= 2;}
+            if(pokemon.getType1() == Type.Ghost || pokemon.getType2() == Type.Ghost){damage /= 2;}
         }
-        else if(attack.type == Type.Electric){ //Electric
-            if(pokemon.Type1 == Type.Ground || pokemon.Type2 == Type.Ground){damage = 0;}
+        else if(attack.getType() == Type.Electric){ //Electric
+            if(pokemon.getType1() == Type.Ground || pokemon.getType2() == Type.Ground){damage = 0;}
 
-            if(pokemon.Type1 == Type.Flying || pokemon.Type2 == Type.Flying){damage *= 2;}
-            if(pokemon.Type1 == Type.Water || pokemon.Type2 == Type.Water){damage *= 2;}
+            if(pokemon.getType1() == Type.Flying || pokemon.getType2() == Type.Flying){damage *= 2;}
+            if(pokemon.getType1() == Type.Water || pokemon.getType2() == Type.Water){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Grass || pokemon.Type2 == Type.Grass){damage /= 2;}
-            if(pokemon.Type1 == Type.Dragon || pokemon.Type2 == Type.Dragon){damage /= 2;}
+            if(pokemon.getType1() == Type.Grass || pokemon.getType2() == Type.Grass){damage /= 2;}
+            if(pokemon.getType1() == Type.Dragon || pokemon.getType2() == Type.Dragon){damage /= 2;}
         }
-        else if(attack.type == Type.Ground){ //Ground
-            if(pokemon.Type1 == Type.Flying || pokemon.Type2 == Type.Flying){damage = 0;}
+        else if(attack.getType() == Type.Ground){ //Ground
+            if(pokemon.getType1() == Type.Flying || pokemon.getType2() == Type.Flying){damage = 0;}
 
-            if(pokemon.Type1 == Type.Poison || pokemon.Type2 == Type.Poison){damage *= 2;}
-            if(pokemon.Type1 == Type.Rock || pokemon.Type2 == Type.Rock){damage *= 2;}
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage *= 2;}
-            if(pokemon.Type1 == Type.Fire || pokemon.Type2 == Type.Fire){damage *= 2;}
-            if(pokemon.Type1 == Type.Electric || pokemon.Type2 == Type.Electric){damage *= 2;}
+            if(pokemon.getType1() == Type.Poison || pokemon.getType2() == Type.Poison){damage *= 2;}
+            if(pokemon.getType1() == Type.Rock || pokemon.getType2() == Type.Rock){damage *= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage *= 2;}
+            if(pokemon.getType1() == Type.Fire || pokemon.getType2() == Type.Fire){damage *= 2;}
+            if(pokemon.getType1() == Type.Electric || pokemon.getType2() == Type.Electric){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Grass || pokemon.Type2 == Type.Grass){damage /= 2;}
-            if(pokemon.Type1 == Type.Bug || pokemon.Type2 == Type.Bug){damage /= 2;}
+            if(pokemon.getType1() == Type.Grass || pokemon.getType2() == Type.Grass){damage /= 2;}
+            if(pokemon.getType1() == Type.Bug || pokemon.getType2() == Type.Bug){damage /= 2;}
         }
-        else if(attack.type == Type.Rock){ //Rock
-            if(pokemon.Type1 == Type.Flying || pokemon.Type2 == Type.Flying){damage *= 2;}
-            if(pokemon.Type1 == Type.Bug || pokemon.Type2 == Type.Bug){damage *= 2;}
-            if(pokemon.Type1 == Type.Fire || pokemon.Type2 == Type.Fire){damage *= 2;}
-            if(pokemon.Type1 == Type.Ice || pokemon.Type2 == Type.Ice){damage *= 2;}
+        else if(attack.getType() == Type.Rock){ //Rock
+            if(pokemon.getType1() == Type.Flying || pokemon.getType2() == Type.Flying){damage *= 2;}
+            if(pokemon.getType1() == Type.Bug || pokemon.getType2() == Type.Bug){damage *= 2;}
+            if(pokemon.getType1() == Type.Fire || pokemon.getType2() == Type.Fire){damage *= 2;}
+            if(pokemon.getType1() == Type.Ice || pokemon.getType2() == Type.Ice){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Fighting || pokemon.Type2 == Type.Fighting){damage /= 2;}
-            if(pokemon.Type1 == Type.Ground || pokemon.Type2 == Type.Ground){damage /= 2;}
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Fighting || pokemon.getType2() == Type.Fighting){damage /= 2;}
+            if(pokemon.getType1() == Type.Ground || pokemon.getType2() == Type.Ground){damage /= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage /= 2;}
         }
-        else if(attack.type == Type.Psychic){ //Psychic
-            if(pokemon.Type1 == Type.Dark || pokemon.Type2 == Type.Dark){damage = 0;}
+        else if(attack.getType() == Type.Psychic){ //Psychic
+            if(pokemon.getType1() == Type.Dark || pokemon.getType2() == Type.Dark){damage = 0;}
 
-            if(pokemon.Type1 == Type.Fighting || pokemon.Type2 == Type.Fighting){damage *= 2;}
-            if(pokemon.Type1 == Type.Poison || pokemon.Type2 == Type.Poison){damage *= 2;}
+            if(pokemon.getType1() == Type.Fighting || pokemon.getType2() == Type.Fighting){damage *= 2;}
+            if(pokemon.getType1() == Type.Poison || pokemon.getType2() == Type.Poison){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage /= 2;}
         }
-        else if(attack.type == Type.Ice){ //Ice
-            if(pokemon.Type1 == Type.Flying || pokemon.Type2 == Type.Flying){damage *= 2;}
-            if(pokemon.Type1 == Type.Ground || pokemon.Type2 == Type.Ground){damage *= 2;}
-            if(pokemon.Type1 == Type.Grass || pokemon.Type2 == Type.Grass){damage *= 2;}
-            if(pokemon.Type1 == Type.Dragon || pokemon.Type2 == Type.Dragon){damage *= 2;}
+        else if(attack.getType() == Type.Ice){ //Ice
+            if(pokemon.getType1() == Type.Flying || pokemon.getType2() == Type.Flying){damage *= 2;}
+            if(pokemon.getType1() == Type.Ground || pokemon.getType2() == Type.Ground){damage *= 2;}
+            if(pokemon.getType1() == Type.Grass || pokemon.getType2() == Type.Grass){damage *= 2;}
+            if(pokemon.getType1() == Type.Dragon || pokemon.getType2() == Type.Dragon){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage /= 2;}
-            if(pokemon.Type1 == Type.Fire || pokemon.Type2 == Type.Fire){damage /= 2;}
-            if(pokemon.Type1 == Type.Water || pokemon.Type2 == Type.Water){damage /= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Fire || pokemon.getType2() == Type.Fire){damage /= 2;}
+            if(pokemon.getType1() == Type.Water || pokemon.getType2() == Type.Water){damage /= 2;}
         }
-        else if(attack.type == Type.Bug){ //Bug
-            if(pokemon.Type1 == Type.Grass || pokemon.Type2 == Type.Grass){damage *= 2;}
-            if(pokemon.Type1 == Type.Psychic || pokemon.Type2 == Type.Psychic){damage *= 2;}
-            if(pokemon.Type1 == Type.Dark || pokemon.Type2 == Type.Dark){damage *= 2;}
+        else if(attack.getType() == Type.Bug){ //Bug
+            if(pokemon.getType1() == Type.Grass || pokemon.getType2() == Type.Grass){damage *= 2;}
+            if(pokemon.getType1() == Type.Psychic || pokemon.getType2() == Type.Psychic){damage *= 2;}
+            if(pokemon.getType1() == Type.Dark || pokemon.getType2() == Type.Dark){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Fighting || pokemon.Type2 == Type.Fighting){damage /= 2;}
-            if(pokemon.Type1 == Type.Flying || pokemon.Type2 == Type.Flying){damage /= 2;}
-            if(pokemon.Type1 == Type.Poison || pokemon.Type2 == Type.Poison){damage /= 2;}
-            if(pokemon.Type1 == Type.Ghost || pokemon.Type2 == Type.Ghost){damage /= 2;}
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage /= 2;}
-            if(pokemon.Type1 == Type.Fire || pokemon.Type2 == Type.Fire){damage /= 2;}
-            if(pokemon.Type1 == Type.Fairy || pokemon.Type2 == Type.Fairy){damage /= 2;}
+            if(pokemon.getType1() == Type.Fighting || pokemon.getType2() == Type.Fighting){damage /= 2;}
+            if(pokemon.getType1() == Type.Flying || pokemon.getType2() == Type.Flying){damage /= 2;}
+            if(pokemon.getType1() == Type.Poison || pokemon.getType2() == Type.Poison){damage /= 2;}
+            if(pokemon.getType1() == Type.Ghost || pokemon.getType2() == Type.Ghost){damage /= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Fire || pokemon.getType2() == Type.Fire){damage /= 2;}
+            if(pokemon.getType1() == Type.Fairy || pokemon.getType2() == Type.Fairy){damage /= 2;}
         }
-        else if(attack.type == Type.Ghost){ //Ghost
-            if(pokemon.Type1 == Type.Normal || pokemon.Type2 == Type.Normal){damage = 0;}
+        else if(attack.getType() == Type.Ghost){ //Ghost
+            if(pokemon.getType1() == Type.Normal || pokemon.getType2() == Type.Normal){damage = 0;}
 
-            if(pokemon.Type1 == Type.Ghost || pokemon.Type2 == Type.Ghost){damage *= 2;}
-            if(pokemon.Type1 == Type.Psychic || pokemon.Type2 == Type.Psychic){damage *= 2;}
+            if(pokemon.getType1() == Type.Ghost || pokemon.getType2() == Type.Ghost){damage *= 2;}
+            if(pokemon.getType1() == Type.Psychic || pokemon.getType2() == Type.Psychic){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Dark || pokemon.Type2 == Type.Dark){damage /= 2;}
+            if(pokemon.getType1() == Type.Dark || pokemon.getType2() == Type.Dark){damage /= 2;}
         }
-        else if(attack.type == Type.Steel){ //Steel
-            if(pokemon.Type1 == Type.Rock || pokemon.Type2 == Type.Rock){damage *= 2;}
-            if(pokemon.Type1 == Type.Ice || pokemon.Type2 == Type.Ice){damage *= 2;}
-            if(pokemon.Type1 == Type.Fairy || pokemon.Type2 == Type.Fairy){damage *= 2;}
+        else if(attack.getType() == Type.Steel){ //Steel
+            if(pokemon.getType1() == Type.Rock || pokemon.getType2() == Type.Rock){damage *= 2;}
+            if(pokemon.getType1() == Type.Ice || pokemon.getType2() == Type.Ice){damage *= 2;}
+            if(pokemon.getType1() == Type.Fairy || pokemon.getType2() == Type.Fairy){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Fire || pokemon.Type2 == Type.Fire){damage /= 2;}
-            if(pokemon.Type1 == Type.Water || pokemon.Type2 == Type.Fairy){damage /= 2;}
-            if(pokemon.Type1 == Type.Electric || pokemon.Type2 == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Fire || pokemon.getType2() == Type.Fire){damage /= 2;}
+            if(pokemon.getType1() == Type.Water || pokemon.getType2() == Type.Fairy){damage /= 2;}
+            if(pokemon.getType1() == Type.Electric || pokemon.getType2() == Type.Steel){damage /= 2;}
         }
-        else if(attack.type == Type.Dragon){ //Dragon
-            if(pokemon.Type1 == Type.Fairy || pokemon.Type2 == Type.Fairy){damage = 0;}
+        else if(attack.getType() == Type.Dragon){ //Dragon
+            if(pokemon.getType1() == Type.Fairy || pokemon.getType2() == Type.Fairy){damage = 0;}
 
-            if(pokemon.Type1 == Type.Dragon || pokemon.Type2 == Type.Dragon){damage *= 2;}
+            if(pokemon.getType1() == Type.Dragon || pokemon.getType2() == Type.Dragon){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage /= 2;}
         }
-        else if(attack.type == Type.Dark){ //Dark
-            if(pokemon.Type1 == Type.Ghost || pokemon.Type2 == Type.Ghost){damage *= 2;}
-            if(pokemon.Type1 == Type.Psychic || pokemon.Type2 == Type.Psychic){damage *= 2;}
+        else if(attack.getType() == Type.Dark){ //Dark
+            if(pokemon.getType1() == Type.Ghost || pokemon.getType2() == Type.Ghost){damage *= 2;}
+            if(pokemon.getType1() == Type.Psychic || pokemon.getType2() == Type.Psychic){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Fighting || pokemon.Type2 == Type.Fighting){damage /= 2;}
-            if(pokemon.Type1 == Type.Fairy || pokemon.Type2 == Type.Fairy){damage /= 2;}
+            if(pokemon.getType1() == Type.Fighting || pokemon.getType2() == Type.Fighting){damage /= 2;}
+            if(pokemon.getType1() == Type.Fairy || pokemon.getType2() == Type.Fairy){damage /= 2;}
         }
-        else if(attack.type == Type.Fairy){ //Fairy
-            if(pokemon.Type1 == Type.Fighting || pokemon.Type2 == Type.Fighting){damage *= 2;}
-            if(pokemon.Type1 == Type.Dragon || pokemon.Type2 == Type.Dragon){damage *= 2;}
-            if(pokemon.Type1 == Type.Dark || pokemon.Type2 == Type.Dark){damage *= 2;}
+        else if(attack.getType() == Type.Fairy){ //Fairy
+            if(pokemon.getType1() == Type.Fighting || pokemon.getType2() == Type.Fighting){damage *= 2;}
+            if(pokemon.getType1() == Type.Dragon || pokemon.getType2() == Type.Dragon){damage *= 2;}
+            if(pokemon.getType1() == Type.Dark || pokemon.getType2() == Type.Dark){damage *= 2;}
 
-            if(pokemon.Type1 == Type.Poison || pokemon.Type2 == Type.Poison){damage /= 2;}
-            if(pokemon.Type1 == Type.Steel || pokemon.Type2 == Type.Steel){damage /= 2;}
-            if(pokemon.Type1 == Type.Fire || pokemon.Type2 == Type.Fire){damage /= 2;}
+            if(pokemon.getType1() == Type.Poison || pokemon.getType2() == Type.Poison){damage /= 2;}
+            if(pokemon.getType1() == Type.Steel || pokemon.getType2() == Type.Steel){damage /= 2;}
+            if(pokemon.getType1() == Type.Fire || pokemon.getType2() == Type.Fire){damage /= 2;}
         }
-        if(attack.type == attacker.Type1 || attack.type == attacker.Type2){
+        if(attack.getType() == attacker.Type1 || attack.getType() == attacker.Type2){
             damage += damage/2;
         }
         if(damage > 0){
