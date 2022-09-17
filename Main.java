@@ -83,36 +83,43 @@ public class Main {
         attacks6[3] = new Attack(Type.Electric, 100, "Shazam", null);
 
         // Enemy Attacks
+
+        // Pichu Attacks
         Attack[] enemyAttacks = new Attack[4];
         enemyAttacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
         enemyAttacks[1] = new Attack(Type.Electric, 50, "Shock", null);
         enemyAttacks[2] = new Attack(Type.Electric, 60, "Zip", null);
         enemyAttacks[3] = new Attack(Type.Electric, 70, "Zap", null);
 
+        // Garbordor Attacks
         Attack[] enemyAttacks2 = new Attack[4];
         enemyAttacks2[0] = new Attack(Type.Normal, 30, "Trash", null);
         enemyAttacks2[1] = new Attack(Type.Normal, 40, "Trashier", null);
         enemyAttacks2[2] = new Attack(Type.Dark, 50, "Trashiest", null);
         enemyAttacks2[3] = new Attack(Type.Normal, 20, "Tackle", null);
 
+        // Persian Attacks
         Attack[] enemyAttacks3 = new Attack[4];
         enemyAttacks3[0] = new Attack(Type.Dark, 50, "Evil Kick", null);
         enemyAttacks3[1] = new Attack(Type.Fighting, 80, "Drop Kick", null);
         enemyAttacks3[2] = new Attack(Type.Dark, 50, "Trashiest", null);
         enemyAttacks3[3] = new Attack(Type.Ground, 90, "Quake", null);
 
+        // Shiinotic Attacks
         Attack[] enemyAttacks4 = new Attack[4];
         enemyAttacks4[0] = new Attack(Type.Fairy, 60, "Magic Kick", null);
         enemyAttacks4[1] = new Attack(Type.Fighting, 80, "Drop Kick", null);
         enemyAttacks4[2] = new Attack(Type.Grass, 40, "Quick Roots", null);
         enemyAttacks4[3] = new Attack(Type.Ground, 90, "Quake", null);
 
+        // Golisopod Attacks
         Attack[] enemyAttacks5 = new Attack[4];
         enemyAttacks5[0] = new Attack(Type.Fairy, 60, "Magic Kick", null);
         enemyAttacks5[1] = new Attack(Type.Fighting, 80, "Drop Kick", null);
         enemyAttacks5[2] = new Attack(Type.Grass, 40, "Quick Roots", null);
         enemyAttacks5[3] = new Attack(Type.Ground, 90, "Quake", null);
 
+        // Giratina Attacks
         Attack[] enemyAttacks6 = new Attack[4];
         enemyAttacks6[0] = new Attack(Type.Dark, 100, "Dark Hold", null);
         enemyAttacks6[1] = new Attack(Type.Ghost, 80, "The Voices", null);
@@ -150,7 +157,7 @@ public class Main {
 
         int currentTurn = 0; // Player or Computer Turn
 
-        // A Bunch of menus
+        // A Bunch of menus (Code by Maitra)
         while(true) {
             pokies[0].effectTick();
             String spaces = "                   ";
@@ -268,6 +275,16 @@ public class Main {
                 if (player.getCurrentPokemon().getHP() <= 0) {
                     player.getCurrentPokemon().setName(player.getCurrentPokemon().getName() + " (Fainted)");
                     System.out.println("Your pokemon fainted");
+                    boolean allPokemonFainted = true;
+                    for(int i = 1; i <player.getPokemons().length; i++) {
+                        if(!player.getPokemons()[i].getName().contains("(Fainted)")) {
+                            allPokemonFainted = false;
+                        }
+                    }
+                    if(allPokemonFainted) {
+                        System.out.println("YOU LOST. COMPUTER WON.");
+                        System.exit(0);
+                    }
                     menu = menuState.Pokemon;
                     print(player, computer, menu, currentTurn);
                     boolean hasChosenAPokemon = false;
