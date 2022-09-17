@@ -127,12 +127,13 @@ public class Main {
         enemyAttacks6[3] = new Attack(Type.Normal, 60, "Tackle Deluxe", null);
 
         // Human Pokemons
-        pokies[0] = new Pokemon(Type.Water, Type.None, 3, 4, 10, 10, "Squirtle", attacks);
+        pokies[0] = new Pokemon(Type.Water, Type.None, 60, 4, 10, 10, "Squirtle", attacks);
         pokies[1] = new Pokemon(Type.Fairy, Type.Normal, 20, 10, 10, 10, "Jigglypuff", attacks2);
         pokies[2] = new Pokemon(Type.Flying, Type.Dragon, 100, 15, 20, 20, "Rayquaza", attacks3);
         pokies[3] = new Pokemon(Type.Grass, Type.Steel, 40, 12, 15, 15, "Ferrothorn", attacks4);
         pokies[4] = new Pokemon(Type.Ghost, Type.Fairy, 30, 9, 10, 10, "Pikachu", attacks5);
         pokies[5] = new Pokemon(Type.Fire, Type.Fighting, 80, 13, 15, 15, "Infernape", attacks6);
+        //NOTE: If a move does no damage, chances are it's a type interaction thing and not a bug in the code
 
         // Computer Pokemons
         computerPokies[0] = new Pokemon(Type.Water, Type.None, 60, 9, 10, 10, "Pichu", enemyAttacks);
@@ -140,14 +141,14 @@ public class Main {
         computerPokies[2] = new Pokemon(Type.Dark, Type.None, 52, 8, 10, 10, "Persian", enemyAttacks3);
         computerPokies[3] = new Pokemon(Type.Grass, Type.Fairy, 30, 2, 15, 15, "Shiinotic", enemyAttacks4);
         computerPokies[4] = new Pokemon(Type.Bug, Type.Water, 33, 3, 15, 15, "Golisopod", enemyAttacks5);
-        computerPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 66, 18, 20, 20, "Giratina", enemyAttacks6);
+        computerPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 40, 18, 20, 20, "Giratina", enemyAttacks6);
 
         // Items
         ArrayList<Item> items = new ArrayList<Item>();
         items.add(new Item("Potion", Effect.allEffects.heal20, 3));
         items.add(new Item("Super Potion", Effect.allEffects.heal50, 2));
         items.add(new Item("MrBounds Potion", Effect.allEffects.heal100, 1));
-        items.add(new Item("Pokeball", Effect.allEffects.pokeballCatch, 6));
+        items.add(new Item("Pokeball", Effect.allEffects.pokeballCatch, 10));
 
         // Custom Player 
         Player player = new Player(name, pokies, items);
@@ -218,6 +219,7 @@ public class Main {
                     for(int i = 0;i < items.size();i++){
                         if(items.get(i).getName().equals(itemIn)){
                             player.removeFromBag(items.get(i));
+                            if(items.get(i).getName().equals("Pokeball")){computerPokies[0].setStatusEffect(Effect.allEffects.pokeballCatch);}
                             textBox = player.getPlayerName() + " used " + items.get(i).getName();
                             if(textBox.length() > 19){
                                 splitText[0] = textBox.substring(0, 19);
@@ -243,7 +245,24 @@ public class Main {
                 }
             }
             else {
+                if(computerPokies[0].getStatusEffect() != null && computerPokies[0].getStatusEffect().equals(Effect.allEffects.pokeballCatch)){
+                    boolean deadPokemon = false;
+                    for(int i = 0; i < player.getPokemons().length;i++){
+                        if(player.getPokemons()[i].getName().contains("(Fainted)")){
+                            player.swapOutPokemon(i,computer.getCurrentPokemon());
+                            deadPokemon = true;
+                            break;
+                        }
+                    }
+                    if(deadPokemon == false){
+                        computerPokies[0].setHP(0);
+                        System.out.println("You returned the pokemon to the opponent's PC. (You were feeling nice)");
+                    }
+                    computerPokies[0].setHP(0);
+                }
+                else{
                 computerPokies[0].effectTick();
+                }
                 // Selects New Pokemon For Computer. If All Pokemon Are Ded, End Game
                 if(computer.getCurrentPokemon().getHP() <= 0) {
                     computer.getCurrentPokemon().setName(computer.getCurrentPokemon().getName() + " (Fainted)");

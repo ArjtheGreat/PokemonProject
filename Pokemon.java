@@ -44,13 +44,29 @@ public class Pokemon {
     public int getHP() {
         return HP;
     }
-    
+
+    public int getStartingHP() {
+        return startingHP;
+    }
+
+    public Attack[] getAttacks() {
+        return attacks;
+    }
+
     public String getName() {
         return name;
     }
     
     public Attack[] getAttack() {
         return attacks;
+    }
+
+    public int getPower(){
+        return attack;
+    }
+
+    public int getDefense() {
+        return defense;
     }
 
     // Mutators
@@ -62,11 +78,26 @@ public class Pokemon {
         this.name = name;
     }
 
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public void setStartingHP(int startingHP) {
+        this.startingHP = startingHP;
+    }
 
     // Code by Nico
     // Sets the effect for the target Pokemon
     public void setStatusEffect(Pokemon pokemon, Effect.allEffects effect){
         statusEffect = effect;
+    }
+
+    public Effect.allEffects getStatusEffect() {
+        return statusEffect;
     }
 
     // Effect Tick for multi-turn effects
