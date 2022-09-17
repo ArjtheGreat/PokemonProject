@@ -37,7 +37,7 @@ public class Main {
         Pokemon[] pokies = new Pokemon[6];
         Pokemon[] computerPokies = new Pokemon[6];
 
-        
+
         // **All Human Pokemon Attacks**
 
         // Squirtle (GOAT) Attacks
@@ -70,17 +70,17 @@ public class Main {
 
         // Pikachu Attacks
         Attack[] attacks5 = new Attack[4];
-        attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
-        attacks[1] = new Attack(Type.Normal, 50, "Shock", null);
-        attacks[2] = new Attack(Type.Normal, 70, "Zap", null);
-        attacks[3] = new Attack(Type.Normal, 100, "Shazam", null);
+        attacks5[0] = new Attack(Type.Normal, 20, "Tackle", null);
+        attacks5[1] = new Attack(Type.Normal, 50, "Shock", null);
+        attacks5[2] = new Attack(Type.Normal, 70, "Zap", null);
+        attacks5[3] = new Attack(Type.Normal, 100, "Shazam", null);
 
         // Infernape Attacks
         Attack[] attacks6 = new Attack[4];
-        attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
-        attacks[1] = new Attack(Type.Normal, 50, "Ember", new Effect(8));
-        attacks[2] = new Attack(Type.Normal, 70, "Punch", null);
-        attacks[3] = new Attack(Type.Normal, 100, "Shazam", null);
+        attacks6[0] = new Attack(Type.Normal, 20, "Tackle", null);
+        attacks6[1] = new Attack(Type.Normal, 50, "Ember", new Effect(8));
+        attacks6[2] = new Attack(Type.Normal, 70, "Punch", null);
+        attacks6[3] = new Attack(Type.Normal, 100, "Shazam", null);
 
         // Enemy Attacks
         Attack[] enemyAttacks = new Attack[4];
@@ -122,7 +122,7 @@ public class Main {
 
         int currentTurn = 0; // Player or Computer Turn
 
-        // A Bunch of menus
+        // A Bunch of menus (code by Maitra)
         while(true) {
             String spaces = "                   ";
             print(player,computer,menu, currentTurn);
@@ -237,6 +237,16 @@ public class Main {
                 if (player.getCurrentPokemon().getHP() <= 0) {
                     player.getCurrentPokemon().setName(player.getCurrentPokemon().getName() + " (Fainted)");
                     System.out.println("Your pokemon fainted");
+                    boolean allPokemonFainted = true;
+                    for(int i = 1; i <player.getPokemons().length; i++) {
+                        if(!player.getPokemons()[i].getName().contains("(Fainted)")) {
+                            allPokemonFainted = false;
+                        }
+                    }
+                    if(allPokemonFainted) {
+                        System.out.println("YOU LOST. COMPUTER WON.");
+                        System.exit(0);
+                    }
                     menu = menuState.Pokemon;
                     print(player, computer, menu, currentTurn);
                     boolean hasChosenAPokemon = false;
