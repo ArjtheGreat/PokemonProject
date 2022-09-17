@@ -244,7 +244,11 @@ public class Main {
                     System.exit(0);
                 }
             }
+
+            // POKEBALL CODE (Nico)
             else {
+
+                // Swaps out Pokemon
                 if(computerPokies[0].getStatusEffect() != null && computerPokies[0].getStatusEffect().equals(Effect.allEffects.pokeballCatch)){
                     boolean deadPokemon = false;
                     for(int i = 0; i < player.getPokemons().length;i++){

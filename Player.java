@@ -32,6 +32,7 @@ public class Player {
         return pokemons[0];
     }
 
+    // Swap Out Pokemon
     public void swapOutPokemon(int partySlot, Pokemon pokemon){
         pokemons[partySlot] = new Pokemon(pokemon.getType1(),pokemon.getType2(), pokemon.getLVL(),1,1,1,pokemon.getName(), pokemon.getAttacks());
         pokemons[partySlot].setAttack(pokemon.getPower());
