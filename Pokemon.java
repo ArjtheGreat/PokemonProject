@@ -13,7 +13,7 @@ public class Pokemon {
     int defense;
     String name;
     Attack[] attacks;
-    Effect statusEffect;
+    Effect.allEffects statusEffect;
 
     public Pokemon(Main.Type Type1, Main.Type Type2, int LVL, int HPBase, int attackBase, int defenseBase, String name, Attack[] attacks){
         this.Type1 = Type1;
@@ -65,47 +65,48 @@ public class Pokemon {
 
     // Code by Nico
     // Sets the effect for the target Pokemon
-    public void setStatusEffect(Pokemon pokemon, Effect effect){
+    public void setStatusEffect(Pokemon pokemon, Effect.allEffects effect){
         statusEffect = effect;
     }
 
     // Effect Tick for multi-turn effects
     public void effectTick(){
-        if(statusEffect != null){
-        if(statusEffect.equals(Effect.allEffects.poison)){
+        if(statusEffect != null && statusEffect.equals(Effect.allEffects.poison)){
             HP -= startingHP/6;
         }
-        if(statusEffect.equals(Effect.allEffects.burn)){
+        if(statusEffect != null && statusEffect.equals(Effect.allEffects.burn)){
             HP -= startingHP/4;
         }
-        if(statusEffect.equals(Effect.allEffects.heal20)){
+        if(statusEffect != null && statusEffect.equals(Effect.allEffects.heal20)){
             HP += 20;
+            if(HP > startingHP){HP = startingHP;}
             statusEffect = null;
         }
-        if(statusEffect.equals(Effect.allEffects.heal50)){
+        if(statusEffect != null && statusEffect.equals(Effect.allEffects.heal50)){
             HP += 50;
+            if(HP > startingHP){HP = startingHP;}
             statusEffect = null;
         }
-        if(statusEffect.equals(Effect.allEffects.heal100)){
+        if(statusEffect != null && statusEffect.equals(Effect.allEffects.heal100)){
             HP += 100;
+            if(HP > startingHP){HP = startingHP;}
             statusEffect = null;
         }
-        if(statusEffect.equals(Effect.allEffects.attackUp)){
+        if(statusEffect != null && statusEffect.equals(Effect.allEffects.attackUp)){
             attack += attack / 4;
             statusEffect = null;
         }
-        if(statusEffect.equals(Effect.allEffects.defenseUp)){
+        if(statusEffect != null && statusEffect.equals(Effect.allEffects.defenseUp)){
             defense += defense / 4;
             statusEffect = null;
         }
-        if(statusEffect.equals(Effect.allEffects.attackDown)){
+        if(statusEffect != null && statusEffect.equals(Effect.allEffects.attackDown)){
             attack -= attack / 4;
             statusEffect = null;
         }
-        if(statusEffect.equals(Effect.allEffects.defenseDown)){
+        if(statusEffect != null && statusEffect.equals(Effect.allEffects.defenseDown)){
             defense -= defense / 4;
             statusEffect = null;
-        }
         }
     }
 
@@ -117,7 +118,7 @@ public class Pokemon {
         return str;
     }
 
-    public void setStatusEffect(Effect effect) {
+    public void setStatusEffect(Effect.allEffects effect) {
         this.statusEffect = effect;
     }
 }

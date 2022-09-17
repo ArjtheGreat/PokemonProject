@@ -5,10 +5,10 @@
 public class Item {
 
     String name;
-    Effect effect;
+    Effect.allEffects effect;
     int quantity;
 
-    public Item(String name, Effect effect, int quantity){
+    public Item(String name, Effect.allEffects effect, int quantity){
         this.name = name;
         this.effect = effect;
         this.quantity = quantity;
@@ -19,7 +19,7 @@ public class Item {
     }
 
     // Accessors
-    public Effect getEffect() {
+    public Effect.allEffects getEffect() {
         return effect;
     }
 

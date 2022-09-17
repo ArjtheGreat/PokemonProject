@@ -7,9 +7,9 @@ public class Attack {
     Main.Type type;
     int power;
     String name;
-    Effect effect;
+    Effect.allEffects effect;
 
-    public Attack(Main.Type type, int power, String name, Effect effect){
+    public Attack(Main.Type type, int power, String name, Effect.allEffects effect){
         this.type = type;
         this.power = power;
         this.name = name;
@@ -29,7 +29,7 @@ public class Attack {
         return name;
     }
 
-    public Effect getEffect(){
+    public Effect.allEffects getEffect(){
         return effect;
     }
 }

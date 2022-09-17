@@ -50,15 +50,15 @@ public class Main {
         // Jigglypuff Attacks
         Attack[] attacks2 = new Attack[4];
         attacks2[0] = new Attack(Type.Fairy, 20, "Sparkles", null);
-        attacks2[1] = new Attack(Type.Poison, 10, "Poison", new Effect(9));
+        attacks2[1] = new Attack(Type.Poison, 10, "Poison", Effect.allEffects.poison);
         attacks2[2] = new Attack(Type.Dark, 50, "Dark Punch", null);
         attacks2[3] = new Attack(Type.Fighting, 70, "Punch", null);
 
         // Rayquaza Attacks
         Attack[] attacks3 = new Attack[4];
-        attacks3[0] = new Attack(Type.Fighting, 50, "Strength", new Effect(4));
-        attacks3[1] = new Attack(Type.Poison, 10, "Poison", new Effect(9));
-        attacks3[2] = new Attack(Type.Fire, 60, "Dark Punch", new Effect(8));
+        attacks3[0] = new Attack(Type.Fighting, 50, "Strength", Effect.allEffects.attackUp);
+        attacks3[1] = new Attack(Type.Poison, 10, "Poison", Effect.allEffects.poison);
+        attacks3[2] = new Attack(Type.Fire, 60, "Dark Punch", Effect.allEffects.attackUp);
         attacks3[3] = new Attack(Type.Dragon, 80, "Dragon Punch", null);
 
         // Ferrothorn Attacks
@@ -66,29 +66,58 @@ public class Main {
         attacks4[0] = new Attack(Type.Rock, 80, "Boulder", null);
         attacks4[1] = new Attack(Type.Grass, 35, "Roots",null);
         attacks4[2] = new Attack(Type.Steel, 70,"Metal Punch",null);
-        attacks4[3] = new Attack(Type.Normal, 20, "Stonewall",new Effect(5));
+        attacks4[3] = new Attack(Type.Normal, 20, "Stonewall", Effect.allEffects.defenseUp);
 
         // Pikachu Attacks
         Attack[] attacks5 = new Attack[4];
-        attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
-        attacks[1] = new Attack(Type.Normal, 50, "Shock", null);
-        attacks[2] = new Attack(Type.Normal, 70, "Zap", null);
-        attacks[3] = new Attack(Type.Normal, 100, "Shazam", null);
+        attacks5[0] = new Attack(Type.Normal, 20, "Tackle", null);
+        attacks5[1] = new Attack(Type.Electric, 50, "Shock", null);
+        attacks5[2] = new Attack(Type.Electric, 70, "Zap", null);
+        attacks5[3] = new Attack(Type.Electric, 100, "Shazam", null);
 
         // Infernape Attacks
         Attack[] attacks6 = new Attack[4];
-        attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
-        attacks[1] = new Attack(Type.Normal, 50, "Ember", new Effect(8));
-        attacks[2] = new Attack(Type.Normal, 70, "Punch", null);
-        attacks[3] = new Attack(Type.Normal, 100, "Shazam", null);
+        attacks6[0] = new Attack(Type.Normal, 20, "Tackle", null);
+        attacks6[1] = new Attack(Type.Fire, 50, "Ember", Effect.allEffects.burn);
+        attacks6[2] = new Attack(Type.Fighting, 70, "Punch", null);
+        attacks6[3] = new Attack(Type.Electric, 100, "Shazam", null);
 
         // Enemy Attacks
         Attack[] enemyAttacks = new Attack[4];
+        enemyAttacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
+        enemyAttacks[1] = new Attack(Type.Electric, 50, "Shock", null);
+        enemyAttacks[2] = new Attack(Type.Electric, 60, "Zip", null);
+        enemyAttacks[3] = new Attack(Type.Electric, 70, "Zap", null);
+
         Attack[] enemyAttacks2 = new Attack[4];
+        enemyAttacks2[0] = new Attack(Type.Normal, 30, "Trash", null);
+        enemyAttacks2[1] = new Attack(Type.Normal, 40, "Trashier", null);
+        enemyAttacks2[2] = new Attack(Type.Dark, 50, "Trashiest", null);
+        enemyAttacks2[3] = new Attack(Type.Normal, 20, "Tackle", null);
+
         Attack[] enemyAttacks3 = new Attack[4];
+        enemyAttacks3[0] = new Attack(Type.Dark, 50, "Evil Kick", null);
+        enemyAttacks3[1] = new Attack(Type.Fighting, 80, "Drop Kick", null);
+        enemyAttacks3[2] = new Attack(Type.Dark, 50, "Trashiest", null);
+        enemyAttacks3[3] = new Attack(Type.Ground, 90, "Quake", null);
+
         Attack[] enemyAttacks4 = new Attack[4];
+        enemyAttacks4[0] = new Attack(Type.Fairy, 60, "Magic Kick", null);
+        enemyAttacks4[1] = new Attack(Type.Fighting, 80, "Drop Kick", null);
+        enemyAttacks4[2] = new Attack(Type.Grass, 40, "Quick Roots", null);
+        enemyAttacks4[3] = new Attack(Type.Ground, 90, "Quake", null);
+
         Attack[] enemyAttacks5 = new Attack[4];
+        enemyAttacks5[0] = new Attack(Type.Fairy, 60, "Magic Kick", null);
+        enemyAttacks5[1] = new Attack(Type.Fighting, 80, "Drop Kick", null);
+        enemyAttacks5[2] = new Attack(Type.Grass, 40, "Quick Roots", null);
+        enemyAttacks5[3] = new Attack(Type.Ground, 90, "Quake", null);
+
         Attack[] enemyAttacks6 = new Attack[4];
+        enemyAttacks6[0] = new Attack(Type.Dark, 100, "Dark Hold", null);
+        enemyAttacks6[1] = new Attack(Type.Ghost, 80, "The Voices", null);
+        enemyAttacks6[2] = new Attack(Type.Ghost, 120, "The Haunt", null);
+        enemyAttacks6[3] = new Attack(Type.Normal, 60, "Tackle Deluxe", null);
 
         // Human Pokemons
         pokies[0] = new Pokemon(Type.Water, Type.None, 3, 4, 10, 10, "Squirtle", attacks);
@@ -99,20 +128,19 @@ public class Main {
         pokies[5] = new Pokemon(Type.Fire, Type.Fighting, 80, 13, 15, 15, "Infernape", attacks6);
 
         // Computer Pokemons
-        computerPokies[0] = new Pokemon(Type.Water, Type.None, 60, 9, 10, 10, "Pichu", attacks);
-        computerPokies[1] = new Pokemon(Type.Poison, Type.None, 38, 5, 10, 10, "Garbodor", attacks);
-        computerPokies[2] = new Pokemon(Type.Dark, Type.None, 52, 8, 10, 10, "Persian", attacks);
-        computerPokies[3] = new Pokemon(Type.Grass, Type.Fairy, 30, 2, 15, 15, "Shiinotic", attacks);
-        computerPokies[4] = new Pokemon(Type.Bug, Type.Water, 33, 3, 15, 15, "Golisopod", attacks);
-        computerPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 66, 18, 20, 20, "Giratina", attacks);
+        computerPokies[0] = new Pokemon(Type.Water, Type.None, 60, 9, 10, 10, "Pichu", enemyAttacks);
+        computerPokies[1] = new Pokemon(Type.Poison, Type.None, 38, 5, 10, 10, "Garbodor", enemyAttacks2);
+        computerPokies[2] = new Pokemon(Type.Dark, Type.None, 52, 8, 10, 10, "Persian", enemyAttacks3);
+        computerPokies[3] = new Pokemon(Type.Grass, Type.Fairy, 30, 2, 15, 15, "Shiinotic", enemyAttacks4);
+        computerPokies[4] = new Pokemon(Type.Bug, Type.Water, 33, 3, 15, 15, "Golisopod", enemyAttacks5);
+        computerPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 66, 18, 20, 20, "Giratina", enemyAttacks6);
 
         // Items
         ArrayList<Item> items = new ArrayList<Item>();
-        items.add(new Item("Item 1", new Effect(3), 3));
-        items.add(new Item("Item 2", new Effect(3), 3));
-        items.add(new Item("Item 3", new Effect(3), 3));
-        items.add(new Item("Item 4", new Effect(3), 3));
-        items.add(new Item("Item 5", new Effect(3), 3));
+        items.add(new Item("Potion", Effect.allEffects.heal20, 3));
+        items.add(new Item("Super Potion", Effect.allEffects.heal50, 2));
+        items.add(new Item("MrBounds Potion", Effect.allEffects.heal100, 1));
+        items.add(new Item("Pokeball", Effect.allEffects.pokeballCatch, 6));
 
         // Custom Player 
         Player player = new Player(name, pokies, items);
@@ -124,11 +152,11 @@ public class Main {
 
         // A Bunch of menus
         while(true) {
+            pokies[0].effectTick();
             String spaces = "                   ";
             print(player,computer,menu, currentTurn);
             //menu = menuState.Battle;
             if(currentTurn % 2 == 0) { // players turn
-                pokies[0].effectTick();
                 System.out.println(player.playerName + ", " + "What do you wanna do?");
                 String line = in.nextLine();
 
@@ -185,8 +213,8 @@ public class Main {
                             player.removeFromBag(items.get(i));
                             textBox = player.getPlayerName() + " used " + items.get(i).getName();
                             if(textBox.length() > 19){
-                            splitText[0] = textBox.substring(0, 18);
-                            splitText[1] = textBox.substring(18, textBox.length());}
+                                splitText[0] = textBox.substring(0, 19);
+                                splitText[1] = textBox.substring(19, textBox.length()) + spaces.substring(textBox.length()-19,spaces.length());}
                             else {splitText[0] = textBox.substring(0, textBox.length()) + spaces.substring(textBox.length(),spaces.length());}
                         }
                     }
@@ -227,9 +255,12 @@ public class Main {
                 System.out.println("Opponent's Turn: ");
                 Random rand = new Random();
                 int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
-                textBox = pokies[0] + " used an attack!" ;
-                splitText[0] = textBox.substring(0, 18);
-                splitText[1] = textBox.substring(19, 33);
+                Attack computerAttack = computer.getPokemons()[0].getAttack()[attackInt];
+                textBox = computer.getPokemons()[0].getName() + " used " + computerAttack.getName();
+                if(textBox.length() > 19){
+                    splitText[0] = textBox.substring(0, 19);
+                    splitText[1] = textBox.substring(19, textBox.length()) + spaces.substring(textBox.length()-19,spaces.length());}
+                else {splitText[0] = textBox.substring(0, textBox.length()) + spaces.substring(textBox.length(),spaces.length());}
                 
                 // Selects New Pokemon For Player If Fainted. Same Error Handling As Above
                 player.getCurrentPokemon().setHP(
@@ -259,8 +290,6 @@ public class Main {
                     menu = menuState.Battle;
                 }
             }
-            splitText[0] = "                   ";
-            splitText[1] = "                   ";
             currentTurn++;
         }
 
@@ -288,6 +317,8 @@ public class Main {
             // Part Two of the Menu - Options for Moves, And Most Recent Move 
             System.out.println("*" +splitText[0]+"|Atk|Bag*");
             System.out.println("*"+splitText[1]+"|Pok|Run*");
+            splitText[0] = "                   ";
+            splitText[1] = "                   ";
             System.out.print("*****************************\n*");
         }
 
