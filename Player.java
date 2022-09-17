@@ -59,6 +59,10 @@ public class Player {
         }
     }
 
+    public String getPlayerName() {
+        return playerName;
+    }
+
     public boolean isInPokemonArray(String inPokieName) {
         for(int i = 0; i<pokemons.length; i++) {
             if(pokemons[i].getName().equals(inPokieName)) {

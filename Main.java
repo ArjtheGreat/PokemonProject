@@ -18,9 +18,10 @@ public class Main {
     };
 
     public static void main(String[] args) {
-        s
         // Default Starts As Battle
         menuState menu = menuState.Battle;
+        splitText[0] = "                   ";
+        splitText[1] = "                   ";
         userSelection(menu);
     }
 
@@ -61,7 +62,16 @@ public class Main {
         attacks4[3] = new Attack(Type.Normal, 20, "Stonewall",new Effect(5));
 
         Attack[] attacks5 = new Attack[4];
+        attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
+        attacks[1] = new Attack(Type.Normal, 50, "Shock", null);
+        attacks[2] = new Attack(Type.Normal, 70, "Zap", null);
+        attacks[3] = new Attack(Type.Normal, 100, "Shazam", null);
+
         Attack[] attacks6 = new Attack[4];
+        attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
+        attacks[1] = new Attack(Type.Normal, 50, "Ember", new Effect(8));
+        attacks[2] = new Attack(Type.Normal, 70, "Punch", null);
+        attacks[3] = new Attack(Type.Normal, 100, "Shazam", null);
 
         Attack[] enemyAttacks = new Attack[4];
         Attack[] enemyAttacks2 = new Attack[4];
@@ -71,19 +81,19 @@ public class Main {
         Attack[] enemyAttacks6 = new Attack[4];
 
         // Pokemon Arrays
-        pokies[0] = new Pokemon(Type.Water, Type.None, 3, 40, 10, 10, "Squirtle", attacks);
-        pokies[1] = new Pokemon(Type.Fairy, Type.Normal, 10, 100, 20, 20, "Jigglypuff", attacks2);
-        pokies[2] = new Pokemon(Type.Flying, Type.Dragon, 100, 150, 100, 100, "Rayquaza", attacks3);
-        pokies[3] = new Pokemon(Type.Grass, Type.Steel, 40, 120, 30, 70, "Ferrothorn", attacks4);
-        pokies[4] = new Pokemon(Type.Ghost, Type.Fairy, 30, 90, 70, 40, "Pikachu", attacks5);
-        pokies[5] = new Pokemon(Type.Fire, Type.Fighting, 80, 130, 90, 80, "Infernape", attacks6);
+        pokies[0] = new Pokemon(Type.Water, Type.None, 3, 4, 10, 10, "Squirtle", attacks);
+        pokies[1] = new Pokemon(Type.Fairy, Type.Normal, 20, 10, 10, 10, "Jigglypuff", attacks2);
+        pokies[2] = new Pokemon(Type.Flying, Type.Dragon, 100, 15, 20, 20, "Rayquaza", attacks3);
+        pokies[3] = new Pokemon(Type.Grass, Type.Steel, 40, 12, 15, 15, "Ferrothorn", attacks4);
+        pokies[4] = new Pokemon(Type.Ghost, Type.Fairy, 30, 9, 10, 10, "Pikachu", attacks5);
+        pokies[5] = new Pokemon(Type.Fire, Type.Fighting, 80, 13, 15, 15, "Infernape", attacks6);
 
-        computerPokies[0] = new Pokemon(Type.Water, Type.None, 60, 85, 75, 88, "Pichu", attacks);
-        computerPokies[1] = new Pokemon(Type.Poison, Type.None, 38, 50, 40, 35, "Garbodor", attacks);
-        computerPokies[2] = new Pokemon(Type.Dark, Type.None, 52, 84, 20, 20, "Persian", attacks);
-        computerPokies[3] = new Pokemon(Type.Grass, Type.Fairy, 30, 20, 5, 10, "Shiinotic", attacks);
-        computerPokies[4] = new Pokemon(Type.Bug, Type.Water, 33, 30, 30, 40, "Golisopod", attacks);
-        computerPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 66, 180, 95, 110, "Giratina", attacks);
+        computerPokies[0] = new Pokemon(Type.Water, Type.None, 60, 9, 10, 10, "Pichu", attacks);
+        computerPokies[1] = new Pokemon(Type.Poison, Type.None, 38, 5, 10, 10, "Garbodor", attacks);
+        computerPokies[2] = new Pokemon(Type.Dark, Type.None, 52, 8, 10, 10, "Persian", attacks);
+        computerPokies[3] = new Pokemon(Type.Grass, Type.Fairy, 30, 2, 15, 15, "Shiinotic", attacks);
+        computerPokies[4] = new Pokemon(Type.Bug, Type.Water, 33, 3, 15, 15, "Golisopod", attacks);
+        computerPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 66, 18, 20, 20, "Giratina", attacks);
 
         ArrayList<Item> items = new ArrayList<Item>();
         items.add(new Item("Item 1", new Effect(3), 3));
@@ -102,6 +112,7 @@ public class Main {
 
         // A Bunch of menus
         while(true) {
+            String spaces = "                   ";
             print(player,computer,menu, currentTurn);
             //menu = menuState.Battle;
             if(currentTurn % 2 == 0) { // players turn
@@ -116,9 +127,11 @@ public class Main {
                     System.out.println("What Attack?");
                     String attackIn = in.nextLine();
                     player.attack(attackIn, computer.getCurrentPokemon());
-                    textBox = pokies[0] + " used " + attackIn;
-                    splitText[0] = textBox.substring(0, 18);
-                    splitText[1] = textBox.substring(19, 37);
+                    textBox = pokies[0].getName() + " used " + attackIn;
+                    if(textBox.length() > 19){
+                        splitText[0] = textBox.substring(0, 19);
+                        splitText[1] = textBox.substring(19, textBox.length()) + spaces.substring(textBox.length()-19,spaces.length());}
+                    else {splitText[0] = textBox.substring(0, textBox.length()) + spaces.substring(textBox.length(),spaces.length());}
                     menu = menuState.Battle;
                 }
 
@@ -158,6 +171,11 @@ public class Main {
                     for(int i = 0;i < items.size();i++){
                         if(items.get(i).getName().equals(itemIn)){
                             player.removeFromBag(items.get(i));
+                            textBox = player.getPlayerName() + " used " + items.get(i).getName();
+                            if(textBox.length() > 19){
+                            splitText[0] = textBox.substring(0, 18);
+                            splitText[1] = textBox.substring(18, textBox.length());}
+                            else {splitText[0] = textBox.substring(0, textBox.length()) + spaces.substring(textBox.length(),spaces.length());}
                         }
                     }
                     menu = menuState.Battle;
@@ -195,7 +213,7 @@ public class Main {
                 int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
                 textBox = pokies[0] + " used an attack!" ;
                 splitText[0] = textBox.substring(0, 18);
-                splitText[1] = textBox.substring(19, 37);
+                splitText[1] = textBox.substring(19, 33);
                 
                 // Selects New Pokemon For Player If Fainted
                 player.getCurrentPokemon().setHP(
@@ -225,6 +243,8 @@ public class Main {
                     menu = menuState.Battle;
                 }
             }
+            splitText[0] = "                   ";
+            splitText[1] = "                   ";
             currentTurn++;
         }
 
