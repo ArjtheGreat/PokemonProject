@@ -27,16 +27,25 @@ public class Player {
     public void addToBag(Item item) {
         items.add(item);
     }
+
+    public Pokemon getCurrentPokemon() {
+        return pokemons[0];
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    // Removes Item From Bag
     public void removeFromBag(Item item) {
         item.consumeItem(pokemons[0]);
         item.setQuantity(item.quantity - 1);
         if(item.getQuantity() == 0){items.remove(item);}
     }
 
-    public Pokemon getCurrentPokemon() {
-        return pokemons[0];
-    }
+    
 
+    // Attacks other Pokemon, updates the effects
     public void attack(String inAttack, Pokemon enemyPokemon) {
         int index = 0;
         for(int i = 0; i<getCurrentPokemon().getAttack().length; i++) {
@@ -59,10 +68,9 @@ public class Player {
         }
     }
 
-    public String getPlayerName() {
-        return playerName;
-    }
+   
 
+    // Check if user input is a Pokemon in the array
     public boolean isInPokemonArray(String inPokieName) {
         for(int i = 0; i<pokemons.length; i++) {
             if(pokemons[i].getName().equals(inPokieName)) {

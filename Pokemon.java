@@ -29,6 +29,8 @@ public class Pokemon {
         this.defense = (int) defenseCalc;
         this.attacks = attacks;
     }
+
+    // Accessors
     public Main.Type getType1(){
         return Type1;
     }
@@ -60,10 +62,14 @@ public class Pokemon {
         this.name = name;
     }
 
+
+    // Code by Nico
+    // Sets the effect for the target Pokemon
     public void setStatusEffect(Pokemon pokemon, Effect effect){
         statusEffect = effect;
     }
 
+    // Effect Tick for multi-turn effects
     public void effectTick(){
         if(statusEffect != null){
         if(statusEffect.equals(Effect.allEffects.poison)){
@@ -104,7 +110,7 @@ public class Pokemon {
     }
 
 
-
+    // Prints Out Pokemon
     public String toString() {
         String str = name + " Level: " + LVL;
 

@@ -30,49 +30,59 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
 
-        // Player Personality
+        // Player Personality (Pokemons by Nico)
         System.out.println("What is your name?");
         String name = in.nextLine();
 
         Pokemon[] pokies = new Pokemon[6];
         Pokemon[] computerPokies = new Pokemon[6];
 
+        
+        // **All Human Pokemon Attacks**
+
+        // Squirtle (GOAT) Attacks
         Attack[] attacks = new Attack[4];
         attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
         attacks[1] = new Attack(Type.Water, 40, "Aqua Jet", null);
         attacks[2] = new Attack(Type.Water, 60, "Water Pulse", null);
         attacks[3] = new Attack(Type.Water, 100, "Hydro Pump", null);
 
+        // Jigglypuff Attacks
         Attack[] attacks2 = new Attack[4];
         attacks2[0] = new Attack(Type.Fairy, 20, "Sparkles", null);
         attacks2[1] = new Attack(Type.Poison, 10, "Poison", new Effect(9));
         attacks2[2] = new Attack(Type.Dark, 50, "Dark Punch", null);
         attacks2[3] = new Attack(Type.Fighting, 70, "Punch", null);
 
+        // Rayquaza Attacks
         Attack[] attacks3 = new Attack[4];
         attacks3[0] = new Attack(Type.Fighting, 50, "Strength", new Effect(4));
         attacks3[1] = new Attack(Type.Poison, 10, "Poison", new Effect(9));
         attacks3[2] = new Attack(Type.Fire, 60, "Dark Punch", new Effect(8));
         attacks3[3] = new Attack(Type.Dragon, 80, "Dragon Punch", null);
 
+        // Ferrothorn Attacks
         Attack[] attacks4 = new Attack[4];
         attacks4[0] = new Attack(Type.Rock, 80, "Boulder", null);
         attacks4[1] = new Attack(Type.Grass, 35, "Roots",null);
         attacks4[2] = new Attack(Type.Steel, 70,"Metal Punch",null);
         attacks4[3] = new Attack(Type.Normal, 20, "Stonewall",new Effect(5));
 
+        // Pikachu Attacks
         Attack[] attacks5 = new Attack[4];
         attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
         attacks[1] = new Attack(Type.Normal, 50, "Shock", null);
         attacks[2] = new Attack(Type.Normal, 70, "Zap", null);
         attacks[3] = new Attack(Type.Normal, 100, "Shazam", null);
 
+        // Infernape Attacks
         Attack[] attacks6 = new Attack[4];
         attacks[0] = new Attack(Type.Normal, 20, "Tackle", null);
         attacks[1] = new Attack(Type.Normal, 50, "Ember", new Effect(8));
         attacks[2] = new Attack(Type.Normal, 70, "Punch", null);
         attacks[3] = new Attack(Type.Normal, 100, "Shazam", null);
 
+        // Enemy Attacks
         Attack[] enemyAttacks = new Attack[4];
         Attack[] enemyAttacks2 = new Attack[4];
         Attack[] enemyAttacks3 = new Attack[4];
@@ -80,7 +90,7 @@ public class Main {
         Attack[] enemyAttacks5 = new Attack[4];
         Attack[] enemyAttacks6 = new Attack[4];
 
-        // Pokemon Arrays
+        // Human Pokemons
         pokies[0] = new Pokemon(Type.Water, Type.None, 3, 4, 10, 10, "Squirtle", attacks);
         pokies[1] = new Pokemon(Type.Fairy, Type.Normal, 20, 10, 10, 10, "Jigglypuff", attacks2);
         pokies[2] = new Pokemon(Type.Flying, Type.Dragon, 100, 15, 20, 20, "Rayquaza", attacks3);
@@ -88,6 +98,7 @@ public class Main {
         pokies[4] = new Pokemon(Type.Ghost, Type.Fairy, 30, 9, 10, 10, "Pikachu", attacks5);
         pokies[5] = new Pokemon(Type.Fire, Type.Fighting, 80, 13, 15, 15, "Infernape", attacks6);
 
+        // Computer Pokemons
         computerPokies[0] = new Pokemon(Type.Water, Type.None, 60, 9, 10, 10, "Pichu", attacks);
         computerPokies[1] = new Pokemon(Type.Poison, Type.None, 38, 5, 10, 10, "Garbodor", attacks);
         computerPokies[2] = new Pokemon(Type.Dark, Type.None, 52, 8, 10, 10, "Persian", attacks);
@@ -95,6 +106,7 @@ public class Main {
         computerPokies[4] = new Pokemon(Type.Bug, Type.Water, 33, 3, 15, 15, "Golisopod", attacks);
         computerPokies[5] = new Pokemon(Type.Ghost, Type.Dragon, 66, 18, 20, 20, "Giratina", attacks);
 
+        // Items
         ArrayList<Item> items = new ArrayList<Item>();
         items.add(new Item("Item 1", new Effect(3), 3));
         items.add(new Item("Item 2", new Effect(3), 3));
@@ -180,6 +192,8 @@ public class Main {
                     }
                     menu = menuState.Battle;
                 }
+
+                // End Game
                 else if(line.equals("Run")) {
                     System.out.println("You ran away. Game over!");
                     System.exit(0);
@@ -208,6 +222,8 @@ public class Main {
                         System.exit(0);
                     }
                 }
+
+                // Computer's Turn
                 System.out.println("Opponent's Turn: ");
                 Random rand = new Random();
                 int attackInt = rand.nextInt(computer.getPokemons()[0].getAttack().length);
@@ -215,7 +231,7 @@ public class Main {
                 splitText[0] = textBox.substring(0, 18);
                 splitText[1] = textBox.substring(19, 33);
                 
-                // Selects New Pokemon For Player If Fainted
+                // Selects New Pokemon For Player If Fainted. Same Error Handling As Above
                 player.getCurrentPokemon().setHP(
                         player.getCurrentPokemon().getHP() - computer.getCurrentPokemon().getAttack()[attackInt].power);
                 if (player.getCurrentPokemon().getHP() <= 0) {
@@ -253,8 +269,12 @@ public class Main {
     // Prints Out Current Menu State (Code by Nico)
     public static void print(Player player1, Player computer, menuState menu, int turn) {
         //Nico did this part
-        
+        // Basically uses substring subtraction to make sure everything fits
+
+        // Battle Menu
         if (menu == menuState.Battle) {
+
+            // Part One of the Menu - Characters, Current Pokemon, HP and Players
             String HP = "HP: "+computer.pokemons[0].HP;
             String spaces = "                             ";
             System.out.print("*****************************\n*");
@@ -264,11 +284,15 @@ public class Main {
             String playerLevelLine = "*    -|-"+spaces1+player1.pokemons[0].toString()+"*";
             String spaces2 = spaces.substring(0,20-("HP: "+player1.pokemons[0].HP).length());
             System.out.print(playerLevelLine+"\n*    / \\"+spaces2+"HP: "+player1.pokemons[0].HP+"*\n*---------------------------*\n");
+
+            // Part Two of the Menu - Options for Moves, And Most Recent Move 
             System.out.println("*" +splitText[0]+"|Atk|Bag*");
             System.out.println("*"+splitText[1]+"|Pok|Run*");
             System.out.print("*****************************\n*");
         }
+
         // By Maitra But Using Nico's Code Base
+        // Attack Menu (Atk)
         else if (menu == menuState.Attack) {
             String spaces = "                             ";
             System.out.print("*****************************\n*");
@@ -281,13 +305,14 @@ public class Main {
                     + spaces.substring(0, 27 - player1.getCurrentPokemon().getAttack()[3].getName().length()) + "*\n*");
             
             System.out.print("*****************************\n*");
-            
         } 
+
+        // Items Menu (Bag)
         else if (menu == menuState.Bag) {
             String spaces = "                             ";
             System.out.print("*****************************\n*");
             System.out.println("Items                      *" + "\n*---------------------------*");
-            //  21  
+            //  28
             for(int i = 0; i<player1.getItems().size(); i++) {
                 String x = "*" +  player1.getItems().get(i).getQuantity() + "x " + player1.getItems().get(i).getName();
                 System.out.println(x
@@ -295,11 +320,13 @@ public class Main {
             }
             System.out.print("*****************************\n*");
         } 
+
+        // Pokemon Menu (Pok)
         else {
             String spaces = "                             ";
             System.out.print("*****************************\n*");
             System.out.println("Pokemon                    *" + "\n*---------------------------*");
-            //  21  
+            //  28
             for(int i = 0; i<player1.getPokemons().length; i++) {
                 String x = "*LVL " + player1.getPokemons()[i].getLVL() + " " + player1.getPokemons()[i].getName();
                 System.out.println(x
