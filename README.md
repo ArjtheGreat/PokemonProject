@@ -1,6 +1,6 @@
 # PokemonProject
  
-## Pokemon Battle Simulator Designed by Arjun Maitra and Nico Aviles
+## Pokemon Battle Simulator Designed by Arjun and Nico
 
 # Classes and Methods: <br />
 Classes: Pokémon, Item, Attack, Main, Effect
