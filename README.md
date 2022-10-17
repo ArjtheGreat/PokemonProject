@@ -1,4 +1,4 @@
-# PokemonProject
+# Pokemon Project
  
 ## Pokemon Battle Simulator Designed by Arjun and Nico
 
